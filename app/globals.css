@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/* ============================================================
+   TOKENS DA MARCA (Tailwind v4 — geram utilitários bg-/text-/…)
+   ============================================================ */
+@theme {
+  --color-teal-100: #d7eeec;
+  --color-teal-300: #8fd3d1;
+  --color-teal-500: #5fb0ad;
+  --color-teal-700: #3e8c89;
+  --color-teal-800: #2d6e6b;
+
+  --color-cream-50: #fbf6ec;
+  --color-cream-100: #f6efdd;
+  --color-cream-200: #efe4cb;
+
+  --color-choco-400: #8a5438;
+  --color-choco-500: #6e3b23;
+  --color-choco-700: #5a3420;
+  --color-choco-900: #3f2417;
+
+  --color-pink-300: #f2a9cc;
+  --color-pink-400: #e6358a;
+  --color-pink-500: #e0579b;
+  --color-pink-600: #d21c78;
+  --color-pink-700: #b11566;
+
+  --color-gold-400: #d8b257;
+  --color-gold-500: #c9a23f;
+
+  --font-display: var(--font-playfair), "Playfair Display", serif;
+  --font-script: var(--font-parisienne), "Parisienne", cursive;
+  --font-body: var(--font-nunito), "Nunito", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+:root {
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: var(--color-cream-50);
+  color: var(--color-choco-700);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+/* âncoras não ficam escondidas sob o header fixo */
+[id] {
+  scroll-margin-top: 84px;
+}
+
+/* ============================================================
+   TRANSIÇÕES / ANIMAÇÕES
+   ============================================================ */
+/* animação de entrada ao rolar — só esconde quando há JS (robusto sem JS) */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.reveal.d1 { transition-delay: 0.08s; }
+.reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; }
+.reveal.d4 { transition-delay: 0.32s; }
+
+.card-lift {
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+.card-lift:hover {
+  transform: translateY(-8px) rotate(-0.5deg);
+  box-shadow: 0 24px 46px -24px rgba(90, 52, 32, 0.5);
+}
+
+.gal img {
+  transition: transform 0.9s var(--ease);
+}
+.gal:hover img {
+  transform: scale(1.08);
+}
+
+.oval-frame {
+  border-radius: 48% 48% 46% 46% / 42% 42% 44% 44%;
+}
+.lace {
+  box-shadow: 0 0 0 2px var(--color-cream-50), 0 0 0 4px var(--color-gold-400);
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.floaty { animation: floaty 4.5s ease-in-out infinite; }
+
+@keyframes pulsekiss {
+  0% { box-shadow: 0 0 0 0 rgba(224, 87, 155, 0.5); }
+  70% { box-shadow: 0 0 0 14px rgba(224, 87, 155, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(224, 87, 155, 0); }
+}
+.pulse { animation: pulsekiss 2.6s infinite; }
+
+/* FAQ acordeão (anima altura via grid) */
+.faq > summary {
+  list-style: none;
+}
+.faq > summary::-webkit-details-marker {
+  display: none;
+}
+.faq .ans {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s var(--ease);
+}
+.faq[open] .ans {
+  grid-template-rows: 1fr;
+}
+.faq .ans > div {
+  overflow: hidden;
+}
+.faq .chev {
+  transition: transform 0.35s var(--ease);
+}
+.faq[open] .chev {
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .floaty, .pulse { animation: none !important; }
+  html { scroll-behavior: auto; }
+}

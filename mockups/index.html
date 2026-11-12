@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dona Glacê — Escolha o caminho visual</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Parisienne&display=swap" rel="stylesheet">
+<style>
+  body{ font-family:Inter,sans-serif; background:#15100c; }
+  .frame{ position:relative; height:420px; overflow:hidden; border-radius:1rem 1rem 0 0; background:#fff; }
+  .frame iframe{ width:1280px; height:1680px; border:0; transform:scale(.345); transform-origin:top left; pointer-events:none; }
+  .script{ font-family:Parisienne,cursive; }
+  .sw{ height:26px; width:26px; border-radius:9999px; box-shadow:0 0 0 2px rgba(255,255,255,.12); }
+  details > summary{ list-style:none; } details > summary::-webkit-details-marker{ display:none; }
+</style>
+</head>
+<body class="text-white/90">
+
+<header class="max-w-6xl mx-auto px-6 pt-14 pb-8 text-center">
+  <p class="script text-4xl text-pink-300">Dona Glacê</p>
+  <h1 class="mt-2 text-3xl sm:text-4xl font-extrabold text-white">Escolha o caminho visual da landing page</h1>
+  <p class="mt-4 text-white/60 max-w-2xl mx-auto">Três conceitos distintos, construídos com as fotos reais do Instagram, o cardápio oficial e a identidade da marca. Abra cada um em tela cheia, compare e me diga qual seguimos — aí monto em <strong class="text-white/80">Next.js 16 + Tailwind</strong> e crio a rota <code class="text-pink-300">/cardapio</code>.</p>
+  <a href="home-final.html" target="_blank" class="mt-7 inline-flex items-center gap-2 rounded-full bg-pink-400 text-white font-bold px-7 py-3.5 hover:bg-pink-500 transition shadow-lg">✨ Ver a versão final (mix aprovado) →</a>
+</header>
+
+<main class="max-w-6xl mx-auto px-6 pb-20 grid lg:grid-cols-3 gap-6">
+
+  <!-- A -->
+  <section class="rounded-2xl bg-white/[.04] border border-white/10 overflow-hidden flex flex-col">
+    <div class="frame"><iframe src="modelo-a.html" title="Modelo A" loading="lazy" scrolling="no"></iframe>
+      <a href="modelo-a.html" target="_blank" class="absolute inset-0"></a></div>
+    <div class="p-5 flex-1 flex flex-col">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-extrabold text-white">A · Doçura Vintage</h2>
+        <span class="text-[11px] font-bold uppercase tracking-wide text-pink-300 bg-pink-300/10 rounded-full px-2.5 py-1">afetivo</span>
+      </div>
+      <p class="mt-2 text-sm text-white/60 flex-1">Fiel ao selo do logo: molduras, script, clima acolhedor e artesanal. Conta a história da Monique e transmite carinho “feito à mão”.</p>
+      <div class="mt-4 flex items-center gap-2">
+        <span class="sw" style="background:#5FB0AD"></span><span class="sw" style="background:#FBF6EC"></span><span class="sw" style="background:#6E3B23"></span><span class="sw" style="background:#E6358A"></span><span class="sw" style="background:#C9A23F"></span>
+      </div>
+      <p class="mt-3 text-xs text-white/40">Playfair Display · Parisienne · Nunito</p>
+      <a href="modelo-a.html" target="_blank" class="mt-4 block text-center rounded-full bg-pink-400 text-white font-bold py-3 hover:bg-pink-500 transition">Abrir Modelo A →</a>
+    </div>
+  </section>
+
+  <!-- B -->
+  <section class="rounded-2xl bg-white/[.04] border border-white/10 overflow-hidden flex flex-col">
+    <div class="frame"><iframe src="modelo-b.html" title="Modelo B" loading="lazy" scrolling="no"></iframe>
+      <a href="modelo-b.html" target="_blank" class="absolute inset-0"></a></div>
+    <div class="p-5 flex-1 flex flex-col">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-extrabold text-white">B · Patisserie Moderna</h2>
+        <span class="text-[11px] font-bold uppercase tracking-wide text-teal-300 bg-teal-300/10 rounded-full px-2.5 py-1">premium</span>
+      </div>
+      <p class="mt-2 text-sm text-white/60 flex-1">Editorial e sofisticado: muito espaço em branco, fotografia protagonista e tipografia serifada elegante. Aspiracional, tipo boutique.</p>
+      <div class="mt-4 flex items-center gap-2">
+        <span class="sw" style="background:#FCFAF4"></span><span class="sw" style="background:#241B15"></span><span class="sw" style="background:#E6358A"></span><span class="sw" style="background:#5FB0AD"></span>
+      </div>
+      <p class="mt-3 text-xs text-white/40">Cormorant Garamond · Inter</p>
+      <a href="modelo-b.html" target="_blank" class="mt-4 block text-center rounded-full bg-teal-500 text-white font-bold py-3 hover:bg-teal-700 transition">Abrir Modelo B →</a>
+    </div>
+  </section>
+
+  <!-- C -->
+  <section class="rounded-2xl bg-white/[.04] border border-white/10 overflow-hidden flex flex-col">
+    <div class="frame"><iframe src="modelo-c.html" title="Modelo C" loading="lazy" scrolling="no"></iframe>
+      <a href="modelo-c.html" target="_blank" class="absolute inset-0"></a></div>
+    <div class="p-5 flex-1 flex flex-col">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-extrabold text-white">C · Confeitaria Irresistível</h2>
+        <span class="text-[11px] font-bold uppercase tracking-wide text-sun-300 bg-yellow-300/10 rounded-full px-2.5 py-1" style="color:#FFC24B">conversão</span>
+      </div>
+      <p class="mt-2 text-sm text-white/60 flex-1">Vibrante e apetitoso, com foco total em vender: badges de urgência, provas sociais, contadores e CTAs de WhatsApp em todo lugar. Vibe D2C.</p>
+      <div class="mt-4 flex items-center gap-2">
+        <span class="sw" style="background:#F24DA0"></span><span class="sw" style="background:#FFC24B"></span><span class="sw" style="background:#331A0E"></span><span class="sw" style="background:#FFF9F0"></span>
+      </div>
+      <p class="mt-3 text-xs text-white/40">Poppins · Inter</p>
+      <a href="modelo-c.html" target="_blank" class="mt-4 block text-center rounded-full font-bold py-3 text-white transition" style="background:#F24DA0">Abrir Modelo C →</a>
+    </div>
+  </section>
+</main>
+
+<section class="max-w-4xl mx-auto px-6 pb-20">
+  <details class="rounded-2xl bg-white/[.04] border border-white/10 p-6" open>
+    <summary class="cursor-pointer font-bold text-white flex items-center justify-between">
+      <span>ℹ️ O que já está pronto (e o que vem depois)</span><span class="text-white/40">▾</span>
+    </summary>
+    <div class="mt-4 grid sm:grid-cols-2 gap-6 text-sm text-white/60">
+      <div>
+        <p class="font-semibold text-white/80 mb-1">Dados reais usados</p>
+        <ul class="space-y-1 list-disc list-inside">
+          <li>Fotos reais do Instagram @donaglace</li>
+          <li>Retrato da Monique + chocotone (do cardápio PDF)</li>
+          <li>Preços reais (sobremesas R$70+, chocotone R$120, mini R$34+)</li>
+          <li>WhatsApp (12) 98104-6072 em todos os CTAs</li>
+          <li>Operação: retirada Caputera · sinal 50% · Pix/cartão/dinheiro</li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold text-white/80 mb-1">Próximos passos após a escolha</p>
+        <ul class="space-y-1 list-disc list-inside">
+          <li>Scaffold Next.js 16 + Tailwind com tokens</li>
+          <li>Transições no <code>globals.css</code></li>
+          <li>Porte do modelo escolhido em componentes</li>
+          <li>Rota <code>/cardapio</code> com o menu completo</li>
+          <li>Atualizar produtos/preços com o cardápio atual</li>
+        </ul>
+      </div>
+    </div>
+    <p class="mt-4 text-xs text-white/40">Observação: os depoimentos são ilustrativos (placeholder) nesta fase de maquete. Trocaremos por avaliações reais na publicação.</p>
+  </details>
+</section>
+
+<footer class="text-center text-white/30 text-xs pb-10">Maquetes · Dona Glacê · Confeitaria · Bolos e doces</footer>
+</body>
+</html>

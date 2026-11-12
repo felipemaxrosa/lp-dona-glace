@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dona Glacê — Confeitaria · Bolos e Doces</title>
+<meta name="description" content="Bolos, sobremesas e doces artesanais feitos à mão desde 2016, em Caraguatatuba. Peça pelo WhatsApp e adoce o seu dia com a Dona Glacê.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>document.documentElement.classList.add('js');</script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          teal:   { 100:'#D7EEEC', 300:'#8FD3D1', 500:'#5FB0AD', 700:'#3E8C89' },
+          cream:  { 50:'#FBF6EC', 100:'#F6EFDD', 200:'#EFE4CB' },
+          choco:  { 400:'#8A5438', 500:'#6E3B23', 700:'#5A3420', 900:'#3F2417' },
+          pink:   { 300:'#F2A9CC', 400:'#E6358A', 500:'#E0579B' },
+          gold:   { 400:'#D8B257', 500:'#C9A23F' },
+        },
+        fontFamily: {
+          script: ['Parisienne','cursive'],
+          display: ['"Playfair Display"','serif'],
+          body: ['Nunito','sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --ease: cubic-bezier(.22,.61,.36,1); }
+  html { scroll-behavior:smooth; }
+  body { background:#FBF6EC; }
+
+  .js .reveal { opacity:0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .reveal.is-visible { opacity:1; transform:none; }
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+
+  .card-lift { transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+  .card-lift:hover { transform: translateY(-8px) rotate(-.5deg); box-shadow: 0 24px 46px -24px rgba(90,52,32,.5); }
+  .gal img { transition: transform .9s var(--ease); } .gal:hover img { transform: scale(1.08); }
+
+  .oval-frame { border-radius: 48% 48% 46% 46% / 42% 42% 44% 44%; }
+  .lace { box-shadow: 0 0 0 2px #FBF6EC, 0 0 0 4px #D8B257; }
+  .scallop { height:24px; background: radial-gradient(circle at 12px -2px, transparent 12px, currentColor 13px); background-size:24px 24px; }
+
+  @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .floaty { animation: floaty 4.5s ease-in-out infinite; }
+  @keyframes pulsekiss { 0%{box-shadow:0 0 0 0 rgba(224,87,155,.5)} 70%{box-shadow:0 0 0 14px rgba(224,87,155,0)} 100%{box-shadow:0 0 0 0 rgba(224,87,155,0)} }
+  .pulse { animation: pulsekiss 2.6s infinite; }
+
+  .marquee { display:flex; gap:2.5rem; white-space:nowrap; animation:scrollx 24s linear infinite; }
+  @keyframes scrollx { to { transform: translateX(-50%); } }
+
+  /* FAQ acordeão refinado */
+  .faq { overflow:hidden; }
+  .faq > summary { list-style:none; } .faq > summary::-webkit-details-marker{ display:none; }
+  .faq .ans { display:grid; grid-template-rows:0fr; transition: grid-template-rows .4s var(--ease); }
+  .faq[open] .ans { grid-template-rows:1fr; }
+  .faq .ans > div { overflow:hidden; }
+  .faq .chev { transition: transform .35s var(--ease); }
+  .faq[open] .chev { transform: rotate(45deg); }
+
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none} .floaty,.pulse,.marquee{animation:none} }
+</style>
+</head>
+<body class="font-body text-choco-700 antialiased">
+
+<!-- ====== TOPBAR URGÊNCIA (base C) ====== -->
+<div class="bg-choco-900 text-cream-50 text-center text-[13px] font-semibold py-2 px-4">
+  🔥 Encomendas abertas — <span class="text-gold-400">vagas limitadas por semana</span>. Garanta a sua data!
+</div>
+
+<!-- ====== NAVBAR (base C, fontes/paleta A) ====== -->
+<header id="hdr" class="sticky top-0 z-50 bg-cream-50/90 backdrop-blur border-b border-gold-400/30 transition">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="#top" class="flex items-center gap-2">
+      <img src="assets/logo.jpg" class="h-10 w-10 rounded-full object-cover ring-2 ring-gold-400/60" alt="Dona Glacê">
+      <span class="font-script text-2xl text-choco-500 leading-none pt-1">Dona Glacê</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-sm font-bold text-choco-500">
+      <a href="#sobre" class="hover:text-pink-400 transition">Sobre</a>
+      <a href="#cardapio" class="hover:text-pink-400 transition">Cardápio</a>
+      <a href="#depoimentos" class="hover:text-pink-400 transition">Depoimentos</a>
+      <a href="#encomendar" class="hover:text-pink-400 transition">Como pedir</a>
+    </nav>
+    <a href="https://wa.me/5512981046072?text=Ol%C3%A1%20Dona%20Glac%C3%AA!%20Quero%20fazer%20um%20pedido%20%F0%9F%8D%B0" target="_blank"
+       class="rounded-full bg-pink-400 text-white text-sm font-bold px-4 py-2 hover:bg-pink-500 transition shadow-md shadow-pink-400/30">
+      Pedir agora
+    </a>
+  </div>
+</header>
+
+<!-- ====== HERO (estrutura C · identidade A · CTAs menores) ====== -->
+<section id="top" class="relative overflow-hidden">
+  <div class="absolute inset-0 -z-10" style="background:
+      radial-gradient(1000px 600px at 12% -5%, #E9F5F4 0%, transparent 60%),
+      radial-gradient(760px 520px at 100% 15%, #F2A9CC3d 0%, transparent 55%),
+      linear-gradient(180deg, #D7EEEC 0%, #C7E8E4 100%);"></div>
+  <div class="absolute inset-0 -z-10 opacity-50" style="background-image:radial-gradient(#D8B25766 1.3px, transparent 1.3px);background-size:26px 26px;"></div>
+
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 pt-12 pb-14 sm:pt-16 grid lg:grid-cols-2 gap-10 items-center">
+    <div class="text-center lg:text-left">
+      <span class="reveal inline-flex items-center gap-2 rounded-full bg-cream-50 border border-gold-400/50 px-4 py-1.5 text-xs font-bold text-choco-400">
+        <span class="text-gold-500">★★★★★</span> +2 mil clientes adoçados desde 2016
+      </span>
+      <h1 class="reveal d1 mt-5 font-display text-[2.5rem] leading-[1.04] sm:text-6xl text-choco-700">
+        O doce que vai ser o<br>
+        <span class="font-script text-pink-400 text-[3.2rem] sm:text-7xl">astro da sua festa</span>
+      </h1>
+      <p class="reveal d2 mt-5 text-lg text-choco-500/90 max-w-md mx-auto lg:mx-0">
+        Bolos, sobremesas e chocotones artesanais que fazem todo mundo perguntar
+        <em>"de quem é esse doce?"</em>. Feitos à mão pela Monique, em Caraguatatuba.
+      </p>
+      <div class="reveal d3 mt-7 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+        <a href="https://wa.me/5512981046072?text=Ol%C3%A1%20Dona%20Glac%C3%AA!%20Quero%20fazer%20meu%20pedido%20%F0%9F%8D%B0" target="_blank"
+           class="pulse rounded-full bg-pink-400 text-white font-bold text-base px-6 py-3 hover:bg-pink-500 transition shadow-lg shadow-pink-400/30">
+          Fazer meu pedido
+        </a>
+        <a href="#cardapio" class="rounded-full bg-white/70 border border-choco-400/25 text-choco-700 font-bold text-base px-6 py-3 hover:bg-white transition">
+          Ver cardápio
+        </a>
+      </div>
+      <div class="reveal d4 mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 justify-center lg:justify-start text-sm text-choco-400">
+        <span class="inline-flex items-center gap-1.5">⚡ Resposta rápida</span>
+        <span class="inline-flex items-center gap-1.5">🤍 Feito à mão</span>
+        <span class="inline-flex items-center gap-1.5">🎁 Caixa personalizada</span>
+      </div>
+    </div>
+
+    <div class="reveal d2 relative">
+      <div class="floaty relative mx-auto w-[86%] max-w-sm">
+        <div class="oval-frame lace overflow-hidden aspect-[4/5] bg-cream-100">
+          <img src="assets/ig-fruitcake.jpg" alt="Bolo moderno de frutas vermelhas" class="h-full w-full object-cover">
+        </div>
+        <div class="absolute -top-3 -right-1 rotate-6 rounded-2xl bg-gold-500 text-white px-4 py-2 shadow-xl text-sm font-bold">⭐ Nota 5,0</div>
+        <div class="absolute -bottom-4 -left-2 -rotate-3 rounded-2xl bg-white px-4 py-2.5 shadow-xl">
+          <p class="text-[11px] text-choco-400 font-semibold leading-none">sobremesas a partir de</p>
+          <p class="font-display text-2xl text-pink-400 leading-tight">R$ 70</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ====== SOBRE A MONIQUE (modelo A, com etiquetas na foto) ====== -->
+<section id="sobre" class="bg-cream-50 py-20 sm:py-24">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="reveal order-2 lg:order-1">
+      <span class="font-script text-3xl text-teal-500">Prazer, eu sou a Monique</span>
+      <h2 class="mt-2 font-display text-3xl sm:text-4xl text-choco-700">Doce de verdade, feito com o coração</h2>
+      <p class="mt-5 text-choco-500/90 leading-relaxed">
+        O que começou em 2016, numa cozinha movida a amor pela confeitaria, hoje já adoçou
+        <strong>mais de 2 mil clientes</strong> em Caraguatatuba. Cada bolo carrega a mesma
+        promessa do primeiro dia: ingredientes de verdade, capricho à mão e aquele sabor que
+        você sente na primeira garfada.
+      </p>
+      <p class="mt-4 text-choco-500/90 leading-relaxed">
+        Aqui não vendemos só doce — ajudamos você a celebrar o que importa: família, amigos e
+        os momentos que aquecem o coração. 🤍
+      </p>
+      <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+        <div class="rounded-2xl bg-white border border-gold-400/30 py-4 card-lift"><p class="font-display text-2xl text-pink-400">10</p><p class="text-xs text-choco-400 mt-1">anos de confeitaria</p></div>
+        <div class="rounded-2xl bg-white border border-gold-400/30 py-4 card-lift"><p class="font-display text-2xl text-pink-400">+2 mil</p><p class="text-xs text-choco-400 mt-1">clientes felizes</p></div>
+        <div class="rounded-2xl bg-white border border-gold-400/30 py-4 card-lift"><p class="font-display text-2xl text-pink-400">100%</p><p class="text-xs text-choco-400 mt-1">feito à mão</p></div>
+      </div>
+    </div>
+    <div class="reveal d1 order-1 lg:order-2 relative">
+      <div class="rounded-[2rem] overflow-hidden shadow-2xl shadow-choco-900/20 border-4 border-white rotate-1">
+        <img src="assets/monique.jpg" alt="Monique Nery, confeiteira da Dona Glacê" class="w-full object-cover">
+      </div>
+      <div class="absolute -bottom-5 left-6 rounded-2xl bg-teal-500 text-white px-5 py-3 shadow-xl -rotate-2">
+        <span class="font-script text-2xl">Monique Nery</span>
+        <p class="text-[11px] uppercase tracking-wide opacity-80">confeiteira & fundadora</p>
+      </div>
+      <div class="absolute -top-4 -right-3 rounded-full bg-pink-400 text-white h-20 w-20 grid place-content-center text-center shadow-xl rotate-6">
+        <span class="font-script text-xl leading-none">desde<br>2016</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CARDÁPIO (modelo A + 5 mais pedidos + botão /cardapio) ====== -->
+<section id="cardapio" class="py-20 sm:py-24 bg-teal-100/60">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <span class="font-script text-3xl text-pink-400">nosso cardápio</span>
+      <h2 class="mt-1 font-display text-3xl sm:text-4xl text-choco-700">Tem um doce certo para cada momento</h2>
+      <p class="mt-4 text-choco-500/90">Comece pelos campeões de pedido — ou escolha por categoria.</p>
+    </div>
+
+    <!-- 5 MAIS PEDIDOS -->
+    <div class="mt-12 reveal">
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <span class="h-px w-10 bg-gold-400/60"></span>
+        <h3 class="font-display text-2xl text-choco-700">⭐ Os 5 mais pedidos</h3>
+        <span class="h-px w-10 bg-gold-400/60"></span>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <article class="card-lift rounded-3xl bg-cream-50 overflow-hidden border border-gold-400/30 shadow-sm relative">
+          <span class="absolute top-2 left-2 z-10 h-7 w-7 rounded-full bg-pink-400 text-white text-sm font-bold grid place-content-center shadow">1</span>
+          <span class="absolute top-2 right-2 z-10 rounded-full bg-gold-500 text-white text-[10px] font-bold px-2 py-0.5 shadow">mais pedido</span>
+          <div class="gal overflow-hidden h-36"><img src="assets/chocotone-trufado.jpg" class="h-full w-full object-cover" alt="Chocotone Trufado"></div>
+          <div class="p-3"><h4 class="font-display text-base text-choco-700 leading-tight">Chocotone Trufado</h4><p class="text-sm text-pink-400 font-bold mt-0.5">R$ 120</p>
+            <a href="https://wa.me/5512981046072?text=Quero%20o%20Chocotone%20Trufado!" target="_blank" class="text-xs font-bold text-choco-400 hover:text-pink-400">Pedir →</a></div>
+        </article>
+        <article class="card-lift rounded-3xl bg-cream-50 overflow-hidden border border-gold-400/30 shadow-sm relative">
+          <span class="absolute top-2 left-2 z-10 h-7 w-7 rounded-full bg-pink-400 text-white text-sm font-bold grid place-content-center shadow">2</span>
+          <div class="gal overflow-hidden h-36"><img src="assets/ig-fruitcake.jpg" class="h-full w-full object-cover" alt="Fruit Cake"></div>
+          <div class="p-3"><h4 class="font-display text-base text-choco-700 leading-tight">Fruit Cake Red Velvet</h4><p class="text-sm text-pink-400 font-bold mt-0.5">sob encomenda</p>
+            <a href="https://wa.me/5512981046072?text=Quero%20o%20Fruit%20Cake%20Red%20Velvet!" target="_blank" class="text-xs font-bold text-choco-400 hover:text-pink-400">Pedir →</a></div>
+        </article>
+        <article class="card-lift rounded-3xl bg-cream-50 overflow-hidden border border-gold-400/30 shadow-sm relative">
+          <span class="absolute top-2 left-2 z-10 h-7 w-7 rounded-full bg-pink-400 text-white text-sm font-bold grid place-content-center shadow">3</span>
+          <div class="gal overflow-hidden h-36"><img src="assets/ig-merengue.jpg" class="h-full w-full object-cover" alt="Merengue de Morango"></div>
+          <div class="p-3"><h4 class="font-display text-base text-choco-700 leading-tight">Merengue de Morango</h4><p class="text-sm text-pink-400 font-bold mt-0.5">a partir de R$ 80</p>
+            <a href="https://wa.me/5512981046072?text=Quero%20o%20Merengue%20de%20Morango!" target="_blank" class="text-xs font-bold text-choco-400 hover:text-pink-400">Pedir →</a></div>
+        </article>
+        <article class="card-lift rounded-3xl bg-cream-50 overflow-hidden border border-gold-400/30 shadow-sm relative">
+          <span class="absolute top-2 left-2 z-10 h-7 w-7 rounded-full bg-pink-400 text-white text-sm font-bold grid place-content-center shadow">4</span>
+          <div class="gal overflow-hidden h-36"><img src="assets/ig-brigadeiros.jpg" class="h-full w-full object-cover" alt="Brigadeiros Gourmet"></div>
+          <div class="p-3"><h4 class="font-display text-base text-choco-700 leading-tight">Brigadeiros Gourmet</h4><p class="text-sm text-pink-400 font-bold mt-0.5">personalizados</p>
+            <a href="https://wa.me/5512981046072?text=Quero%20Brigadeiros%20Gourmet!" target="_blank" class="text-xs font-bold text-choco-400 hover:text-pink-400">Pedir →</a></div>
+        </article>
+        <article class="card-lift rounded-3xl bg-cream-50 overflow-hidden border border-gold-400/30 shadow-sm relative">
+          <span class="absolute top-2 left-2 z-10 h-7 w-7 rounded-full bg-pink-400 text-white text-sm font-bold grid place-content-center shadow">5</span>
+          <div class="gal overflow-hidden h-36"><img src="assets/ig-shagcake.jpg" class="h-full w-full object-cover" alt="Bolo Decorado"></div>
+          <div class="p-3"><h4 class="font-display text-base text-choco-700 leading-tight">Bolos Decorados</h4><p class="text-sm text-pink-400 font-bold mt-0.5">sob encomenda</p>
+            <a href="https://wa.me/5512981046072?text=Quero%20um%20Bolo%20Decorado!" target="_blank" class="text-xs font-bold text-choco-400 hover:text-pink-400">Pedir →</a></div>
+        </article>
+      </div>
+      <p class="text-center text-xs text-choco-400/70 mt-3">seleção ilustrativa — confirmamos os campeões com a Monique</p>
+    </div>
+
+    <!-- CATEGORIAS -->
+    <div class="mt-14 reveal">
+      <h3 class="text-center font-display text-2xl text-choco-700 mb-6">Explore por categoria</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="card-lift rounded-3xl bg-cream-50 overflow-hidden border border-gold-400/30 shadow-sm">
+          <div class="gal overflow-hidden h-44"><img src="assets/ig-shagcake.jpg" class="h-full w-full object-cover" alt="Bolos decorados"></div>
+          <div class="p-5"><h4 class="font-display text-xl text-choco-700">Bolos Decorados</h4><p class="mt-1.5 text-sm text-choco-500/90">Temáticos, infantis e cheios de personalidade.</p></div>
+        </article>
+        <article class="card-lift rounded-3xl bg-cream-50 overflow-hidden border border-gold-400/30 shadow-sm">
+          <div class="gal overflow-hidden h-44"><img src="assets/ig-fruitcake.jpg" class="h-full w-full object-cover" alt="Bolos modernos"></div>
+          <div class="p-5"><h4 class="font-display text-xl text-choco-700">Bolos Modernos</h4><p class="mt-1.5 text-sm text-choco-500/90">Red velvet, frutas vermelhas e recheios que surpreendem.</p></div>
+        </article>
+        <article class="card-lift rounded-3xl bg-cream-50 overflow-hidden border border-gold-400/30 shadow-sm">
+          <div class="gal overflow-hidden h-44 relative"><img src="assets/ig-merengue.jpg" class="h-full w-full object-cover" alt="Sobremesas"><span class="absolute top-3 right-3 rounded-full bg-teal-500 text-white text-xs font-bold px-3 py-1">R$ 70+</span></div>
+          <div class="p-5"><h4 class="font-display text-xl text-choco-700">Sobremesas na Travessa</h4><p class="mt-1.5 text-sm text-choco-500/90">Merengue, banoffe, maracujá — servem de 6 a 10.</p></div>
+        </article>
+        <article class="card-lift rounded-3xl bg-cream-50 overflow-hidden border border-gold-400/30 shadow-sm">
+          <div class="gal overflow-hidden h-44"><img src="assets/ig-brigadeiros.jpg" class="h-full w-full object-cover" alt="Brigadeiros gourmet"></div>
+          <div class="p-5"><h4 class="font-display text-xl text-choco-700">Brigadeiros Gourmet</h4><p class="mt-1.5 text-sm text-choco-500/90">Personalizados com flores e cores para o seu evento.</p></div>
+        </article>
+        <article class="card-lift rounded-3xl bg-cream-50 overflow-hidden border border-gold-400/30 shadow-sm">
+          <div class="gal overflow-hidden h-44 relative"><img src="assets/ig-minichocotone.jpg" class="h-full w-full object-cover" alt="Chocotones"><span class="absolute top-3 right-3 rounded-full bg-pink-400 text-white text-xs font-bold px-3 py-1">sazonal</span></div>
+          <div class="p-5"><h4 class="font-display text-xl text-choco-700">Chocotones Artesanais</h4><p class="mt-1.5 text-sm text-choco-500/90">Trufados e recheados, do mini ao 1kg. A partir de R$ 34.</p></div>
+        </article>
+        <article class="card-lift rounded-3xl bg-choco-700 text-cream-50 overflow-hidden border border-gold-400/30 shadow-sm flex flex-col justify-center p-6 text-center">
+          <span class="font-script text-3xl text-teal-300">datas especiais</span>
+          <p class="mt-2 text-sm text-cream-100/90">Natal, Páscoa, Dia das Mães e cada celebração que merece um doce de verdade.</p>
+        </article>
+      </div>
+    </div>
+
+    <!-- BOTÃO VER CARDÁPIO COMPLETO -->
+    <div class="mt-12 text-center reveal">
+      <a href="#" onclick="return verCardapio(event)"
+         class="inline-flex items-center gap-2 rounded-full bg-pink-400 text-white font-bold text-lg px-8 py-4 hover:bg-pink-500 transition shadow-lg shadow-pink-400/30">
+        Ver cardápio completo
+        <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current stroke-2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p class="mt-3 text-xs text-choco-400/80">todos os sabores e preços na página <code>/cardapio</code></p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== DEPOIMENTOS (citação grande do B + cards do A) ====== -->
+<section id="depoimentos" class="py-20 sm:py-24 bg-cream-50">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="text-center reveal">
+      <span class="font-script text-3xl text-teal-500">quem prova, ama</span>
+    </div>
+    <!-- citação em destaque (modelo B) -->
+    <blockquote class="reveal d1 mt-6 max-w-4xl mx-auto text-center font-display italic text-2xl sm:text-[2.1rem] leading-snug text-choco-700">
+      "O bolo foi, sem exagero, a coisa mais linda e gostosa que servi numa festa.
+      A Dona Glacê entrega arte — não peço de outro lugar."
+    </blockquote>
+    <p class="reveal d1 mt-5 text-center text-sm font-bold uppercase tracking-widest text-pink-400">Juliana P. · Caraguatatuba</p>
+
+    <!-- cards (modelo A) -->
+    <div class="mt-14 grid md:grid-cols-3 gap-6">
+      <figure class="card-lift reveal rounded-3xl bg-white border border-gold-400/30 p-6">
+        <div class="text-gold-500 text-lg">★★★★★</div>
+        <blockquote class="mt-3 text-choco-500/90">"Encomendei o chocotone trufado e foi o melhor que já comi. Atendimento impecável da Monique."</blockquote>
+        <figcaption class="mt-4 font-bold text-choco-700">Rafael M. <span class="font-normal text-choco-400 text-sm">· Martim de Sá</span></figcaption>
+      </figure>
+      <figure class="card-lift reveal d1 rounded-3xl bg-white border border-gold-400/30 p-6">
+        <div class="text-gold-500 text-lg">★★★★★</div>
+        <blockquote class="mt-3 text-choco-500/90">"Fez o bolo da minha filha idêntico ao que pedi. Me emocionei! Já encomendei o próximo."</blockquote>
+        <figcaption class="mt-4 font-bold text-choco-700">Camila S. <span class="font-normal text-choco-400 text-sm">· Indaiá</span></figcaption>
+      </figure>
+      <figure class="card-lift reveal d2 rounded-3xl bg-white border border-gold-400/30 p-6">
+        <div class="text-gold-500 text-lg">★★★★★</div>
+        <blockquote class="mt-3 text-choco-500/90">"Sabor de verdade e um capricho que impressiona. Virou tradição nas nossas datas."</blockquote>
+        <figcaption class="mt-4 font-bold text-choco-700">Beatriz L. <span class="font-normal text-choco-400 text-sm">· Centro</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ENCOMENDAR + FAQ (modelo A, estilização melhorada) ====== -->
+<section id="encomendar" class="py-20 sm:py-24 bg-teal-500 text-white relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10" style="background-image:radial-gradient(#fff 1.5px, transparent 1.5px);background-size:24px 24px;"></div>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 relative">
+    <div class="text-center reveal">
+      <span class="font-script text-3xl text-cream-100">é rapidinho</span>
+      <h2 class="mt-1 font-display text-3xl sm:text-4xl">Encomendar é simples assim</h2>
+    </div>
+
+    <!-- passos com linha conectora -->
+    <div class="mt-12 relative">
+      <div class="hidden lg:block absolute top-11 left-[12%] right-[12%] h-0.5 bg-white/25"></div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+        <div class="reveal text-center">
+          <div class="mx-auto h-14 w-14 rounded-full bg-pink-400 ring-4 ring-teal-500 grid place-content-center font-display text-2xl shadow-lg">1</div>
+          <h3 class="mt-4 font-display text-xl">Chame no WhatsApp</h3>
+          <p class="mt-2 text-sm text-cream-100/90">Conte a data, o tema e para quantas pessoas.</p>
+        </div>
+        <div class="reveal d1 text-center">
+          <div class="mx-auto h-14 w-14 rounded-full bg-pink-400 ring-4 ring-teal-500 grid place-content-center font-display text-2xl shadow-lg">2</div>
+          <h3 class="mt-4 font-display text-xl">Receba o orçamento</h3>
+          <p class="mt-2 text-sm text-cream-100/90">A Monique monta uma proposta sob medida pra você.</p>
+        </div>
+        <div class="reveal d2 text-center">
+          <div class="mx-auto h-14 w-14 rounded-full bg-pink-400 ring-4 ring-teal-500 grid place-content-center font-display text-2xl shadow-lg">3</div>
+          <h3 class="mt-4 font-display text-xl">Garanta sua data</h3>
+          <p class="mt-2 text-sm text-cream-100/90">Confirme com 50% de sinal — Pix, cartão ou dinheiro.</p>
+        </div>
+        <div class="reveal d3 text-center">
+          <div class="mx-auto h-14 w-14 rounded-full bg-pink-400 ring-4 ring-teal-500 grid place-content-center font-display text-2xl shadow-lg">4</div>
+          <h3 class="mt-4 font-display text-xl">É só retirar</h3>
+          <p class="mt-2 text-sm text-cream-100/90">No Bairro Caputera, pertinho do Assaí. 🎁</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ refinado -->
+    <div class="mt-16 max-w-3xl mx-auto reveal">
+      <h3 class="text-center font-display text-2xl mb-6">Perguntas frequentes</h3>
+      <div class="space-y-3">
+        <details class="faq rounded-2xl bg-white text-choco-700 shadow-lg shadow-teal-700/20">
+          <summary class="cursor-pointer font-bold flex justify-between items-center gap-4 p-5 hover:text-pink-400 transition">Com quanta antecedência preciso encomendar?<span class="chev text-pink-400 text-xl shrink-0">＋</span></summary>
+          <div class="ans"><div><p class="px-5 pb-5 text-sm text-choco-500">Quanto antes, melhor! As vagas de produção da semana são limitadas e datas concorridas esgotam rápido — garanta a sua com alguns dias de antecedência.</p></div></div>
+        </details>
+        <details class="faq rounded-2xl bg-white text-choco-700 shadow-lg shadow-teal-700/20">
+          <summary class="cursor-pointer font-bold flex justify-between items-center gap-4 p-5 hover:text-pink-400 transition">Como funciona o pagamento?<span class="chev text-pink-400 text-xl shrink-0">＋</span></summary>
+          <div class="ans"><div><p class="px-5 pb-5 text-sm text-choco-500">Agendamos com 50% de sinal e o restante na retirada. Aceitamos Pix, cartão (link) e dinheiro. O pedido é confirmado após o envio do comprovante.</p></div></div>
+        </details>
+        <details class="faq rounded-2xl bg-white text-choco-700 shadow-lg shadow-teal-700/20">
+          <summary class="cursor-pointer font-bold flex justify-between items-center gap-4 p-5 hover:text-pink-400 transition">Fazem bolos temáticos e sobremesas grandes?<span class="chev text-pink-400 text-xl shrink-0">＋</span></summary>
+          <div class="ans"><div><p class="px-5 pb-5 text-sm text-choco-500">Sim! Bolos decorados, temáticos, modernos e sobremesas na travessa que servem de 6 a 10 porções.</p></div></div>
+        </details>
+        <details class="faq rounded-2xl bg-white text-choco-700 shadow-lg shadow-teal-700/20">
+          <summary class="cursor-pointer font-bold flex justify-between items-center gap-4 p-5 hover:text-pink-400 transition">Qual o horário de atendimento?<span class="chev text-pink-400 text-xl shrink-0">＋</span></summary>
+          <div class="ans"><div><p class="px-5 pb-5 text-sm text-choco-500">De terça a sábado. Mande sua mensagem no WhatsApp que a gente responde rapidinho.</p></div></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CTA FINAL ====== -->
+<section class="py-16 sm:py-20 bg-cream-50">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 reveal">
+    <div class="relative overflow-hidden rounded-[2rem] ring-1 ring-gold-400/40 shadow-xl text-center px-6 py-12 sm:py-14"
+         style="background:
+           radial-gradient(620px 320px at 50% -12%, #F2A9CC 0%, transparent 60%),
+           linear-gradient(160deg, #E0579B 0%, #E6358A 100%);">
+      <div class="absolute inset-0 opacity-[.14]" style="background-image:radial-gradient(#fff 1.4px, transparent 1.4px);background-size:22px 22px;"></div>
+      <div class="relative text-white">
+        <span class="font-script text-3xl text-cream-50">não perca sua data</span>
+        <h2 class="mt-1 font-display text-3xl sm:text-4xl">Sua data pode esgotar essa semana ⏳</h2>
+        <p class="mt-3 text-white/90 max-w-xl mx-auto">Não arrisque ficar sem. Fale com a Monique agora e garanta o doce que vai roubar a cena. 🤍</p>
+        <a href="https://wa.me/5512981046072?text=Ol%C3%A1%20Dona%20Glac%C3%AA!%20Quero%20garantir%20minha%20data%20%F0%9F%8D%B0" target="_blank"
+           class="mt-7 inline-block rounded-full bg-white text-pink-500 font-extrabold px-8 py-4 hover:bg-cream-50 transition shadow-lg">
+          Fazer meu pedido no WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FOOTER (modelo A) ====== -->
+<footer class="bg-choco-900 text-cream-100/80 pt-14 pb-8">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 grid sm:grid-cols-3 gap-10">
+    <div>
+      <div class="flex items-center gap-2">
+        <img src="assets/logo.jpg" class="h-12 w-12 rounded-full object-cover ring-2 ring-gold-400/60" alt="Dona Glacê">
+        <span class="font-script text-3xl text-cream-50">Dona Glacê</span>
+      </div>
+      <p class="mt-4 text-sm">Confeitaria artesanal em Caraguatatuba. Bolos e doces feitos à mão desde 2016. Adoce seu dia. 🤍</p>
+    </div>
+    <div class="text-sm">
+      <h4 class="font-display text-cream-50 text-lg mb-3">Contato</h4>
+      <p>WhatsApp: <a href="https://wa.me/5512981046072" class="text-teal-300 hover:text-teal-100">(12) 98104-6072</a></p>
+      <p class="mt-1">Instagram: <a href="https://instagram.com/donaglace" class="text-teal-300 hover:text-teal-100">@donaglace</a></p>
+      <p class="mt-1">Atendimento: Terça a Sábado</p>
+    </div>
+    <div class="text-sm">
+      <h4 class="font-display text-cream-50 text-lg mb-3">Retirada</h4>
+      <p>Bairro Caputera — próximo ao mercado Assaí</p>
+      <p class="mt-1">Caraguatatuba · SP</p>
+      <p class="mt-1">Agendamento com 50% de sinal · Pix, cartão e dinheiro</p>
+    </div>
+  </div>
+  <div class="mx-auto max-w-6xl px-6 mt-10 pt-6 border-t border-white/10 text-center text-xs text-cream-100/50">
+    © 2026 Dona Glacê · Feito com ♥ em Caraguatatuba
+  </div>
+</footer>
+
+<!-- ====== WHATSAPP FLUTUANTE ====== -->
+<a href="https://wa.me/5512981046072?text=Ol%C3%A1%20Dona%20Glac%C3%AA!%20Vim%20pelo%20site%20%F0%9F%8D%B0" target="_blank"
+   class="fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-[#25D366] text-white font-bold pl-3 pr-5 py-3 shadow-2xl hover:scale-105 transition">
+  <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.516 5.26l-.999 3.648 3.472-.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  Pedir agora
+</a>
+
+<script>
+  const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const cio = new IntersectionObserver((es)=>{es.forEach(e=>{ if(e.isIntersecting){ const el=e.target, to=+el.dataset.to; let n=0; const step=Math.max(1,Math.ceil(to/60)); const t=setInterval(()=>{ n+=step; if(n>=to){n=to;clearInterval(t);} el.textContent = to>=1000 ? '+'+(Math.round(n/100)/10)+' mil' : n; },24); cio.unobserve(el);} })},{threshold:.6});
+  document.querySelectorAll('.count').forEach(el=>cio.observe(el));
+
+  function verCardapio(e){ e.preventDefault(); alert('No site final, este botão leva à página /cardapio com o cardápio completo (todos os sabores e preços).'); return false; }
+</script>
+</body>
+</html>

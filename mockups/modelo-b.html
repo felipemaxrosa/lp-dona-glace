@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dona Glacê — Modelo B · Patisserie Moderna</title>
+<meta name="description" content="Confeitaria autoral da Monique Nery. Bolos modernos, sobremesas e doces finos sob encomenda em Caraguatatuba.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>document.documentElement.classList.add('js');</script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          teal:  { 100:'#D7EEEC', 300:'#8FD3D1', 500:'#5FB0AD', 700:'#3E8C89' },
+          cream: { 50:'#FCFAF4', 100:'#F6EFDD', 200:'#EFE4CB' },
+          ink:   { 500:'#5A4A3F', 700:'#3B2E26', 900:'#241B15' },
+          pink:  { 400:'#E6358A', 500:'#E0579B' },
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"','serif'],
+          sans: ['Inter','sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --ease: cubic-bezier(.19,1,.22,1); }
+  html { scroll-behavior:smooth; }
+  body { background:#FCFAF4; }
+  .eyebrow { letter-spacing:.32em; text-transform:uppercase; font-size:.7rem; font-weight:600; }
+
+  .js .reveal { opacity:0; transform: translateY(34px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+  .reveal.is-visible { opacity:1; transform:none; }
+  .reveal.d1{transition-delay:.12s}.reveal.d2{transition-delay:.24s}.reveal.d3{transition-delay:.36s}
+
+  /* leve clip-reveal pras imagens */
+  .imgwrap { overflow:hidden; }
+  .imgwrap img { transition: transform 1.4s var(--ease); will-change:transform; }
+  .imgwrap:hover img { transform: scale(1.06); }
+
+  .ln { position:relative; }
+  .ln::after { content:''; position:absolute; left:0; bottom:-3px; height:1px; width:0; background:#E6358A; transition:width .5s var(--ease); }
+  .ln:hover::after { width:100%; }
+
+  .btn-ink { transition: background .4s var(--ease), color .4s var(--ease); }
+
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none} }
+</style>
+</head>
+<body class="font-sans text-ink-700 antialiased selection:bg-pink-400 selection:text-white">
+
+<!-- HEADER -->
+<header id="hdr" class="fixed top-0 inset-x-0 z-50 transition-all duration-500 border-b border-transparent">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 flex items-center justify-between h-20" id="hdrbar">
+    <a href="#top" class="flex items-center gap-3">
+      <img src="assets/logo.jpg" alt="Dona Glacê" class="h-10 w-10 rounded-full object-cover">
+      <span class="font-serif text-2xl tracking-tight text-ink-900">Dona Glacê</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-9 text-[13px] font-medium text-ink-500">
+      <a href="#sobre" class="ln">Sobre</a>
+      <a href="#cardapio" class="ln">Cardápio</a>
+      <a href="#galeria" class="ln">Galeria</a>
+      <a href="#encomendar" class="ln">Encomendas</a>
+    </nav>
+    <a href="https://wa.me/5512981046072?text=Ol%C3%A1%20Dona%20Glac%C3%AA!%20Gostaria%20de%20fazer%20um%20pedido." target="_blank"
+       class="btn-ink text-[12px] font-semibold uppercase tracking-widest border border-ink-900 text-ink-900 px-5 py-3 hover:bg-ink-900 hover:text-cream-50">
+      Fazer pedido
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative min-h-screen grid lg:grid-cols-2">
+  <div class="flex items-center px-6 sm:px-12 lg:px-16 pt-28 pb-16 bg-cream-50">
+    <div class="max-w-lg">
+      <p class="reveal eyebrow text-pink-400">Dona Glacê · Caraguatatuba</p>
+      <h1 class="reveal d1 mt-6 font-serif text-5xl sm:text-7xl leading-[.98] text-ink-900">
+        A arte de <em class="italic text-pink-400">adoçar</em> momentos.
+      </h1>
+      <p class="reveal d2 mt-7 text-lg font-light leading-relaxed text-ink-500 max-w-md">
+        Confeitaria autoral de Monique Nery. Bolos modernos, sobremesas e doces finos —
+        feitos sob encomenda, com ingredientes selecionados e um acabamento impecável.
+      </p>
+      <div class="reveal d3 mt-9 flex flex-wrap items-center gap-6">
+        <a href="https://wa.me/5512981046072?text=Ol%C3%A1%20Dona%20Glac%C3%AA!%20Quero%20fazer%20um%20pedido." target="_blank"
+           class="btn-ink bg-ink-900 text-cream-50 text-[12px] font-semibold uppercase tracking-widest px-8 py-4 hover:bg-pink-400">
+          Fazer meu pedido
+        </a>
+        <a href="#cardapio" class="ln text-sm font-medium text-ink-700">Explorar o cardápio</a>
+      </div>
+      <div class="reveal d3 mt-12 flex items-center gap-8 text-sm text-ink-500">
+        <div><span class="font-serif text-3xl text-ink-900 block leading-none">2016</span>desde</div>
+        <div class="h-8 w-px bg-ink-900/15"></div>
+        <div><span class="font-serif text-3xl text-ink-900 block leading-none">+2 mil</span>clientes</div>
+        <div class="h-8 w-px bg-ink-900/15"></div>
+        <div><span class="font-serif text-3xl text-ink-900 block leading-none">★ 5,0</span>avaliação</div>
+      </div>
+    </div>
+  </div>
+  <div class="imgwrap relative min-h-[60vh] lg:min-h-screen">
+    <img src="assets/ig-floral.jpg" alt="Bolo floral autoral" class="absolute inset-0 h-full w-full object-cover">
+    <span class="absolute bottom-6 left-6 bg-cream-50/90 backdrop-blur px-4 py-2 text-[11px] uppercase tracking-widest text-ink-700">Bolo floral · massa branca, doce de leite & ameixa</span>
+  </div>
+</section>
+
+<!-- MARQUEE / selo -->
+<div class="bg-ink-900 text-cream-50/80 py-4 overflow-hidden">
+  <div class="mx-auto max-w-7xl px-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-2 text-[12px] uppercase tracking-[.25em]">
+    <span>Feito à mão</span><span class="text-pink-400">•</span>
+    <span>Ingredientes selecionados</span><span class="text-pink-400">•</span>
+    <span>Sob encomenda</span><span class="text-pink-400">•</span>
+    <span>Caraguatatuba · SP</span>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section id="sobre" class="py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 sm:px-8 grid lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-5 imgwrap reveal">
+      <img src="assets/monique.jpg" alt="Monique Nery, confeiteira" class="w-full aspect-[4/3] object-cover">
+    </div>
+    <div class="lg:col-span-6 lg:col-start-7 reveal d1">
+      <p class="eyebrow text-pink-400">A confeiteira</p>
+      <h2 class="mt-4 font-serif text-4xl sm:text-5xl leading-tight text-ink-900">Monique Nery</h2>
+      <p class="mt-6 text-lg font-light leading-relaxed text-ink-500">
+        Desde 2016, transformo ingredientes simples em celebrações memoráveis. Cada peça que
+        sai da minha cozinha é pensada nos mínimos detalhes — do recheio ao acabamento — porque
+        acredito que um doce é também uma forma de dizer <em class="italic text-ink-700">"eu me importo"</em>.
+      </p>
+      <p class="mt-4 text-lg font-light leading-relaxed text-ink-500">
+        Mais de 2 mil clientes já confiaram as suas datas especiais à Dona Glacê. Será uma honra
+        cuidar da sua também.
+      </p>
+      <div class="mt-8 h-px w-24 bg-pink-400"></div>
+      <p class="mt-4 font-serif italic text-2xl text-ink-700">Adoce o seu dia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CARDÁPIO -->
+<section id="cardapio" class="py-24 sm:py-32 bg-cream-100/50">
+  <div class="mx-auto max-w-7xl px-6 sm:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 reveal">
+      <div>
+        <p class="eyebrow text-pink-400">O cardápio</p>
+        <h2 class="mt-3 font-serif text-4xl sm:text-5xl text-ink-900 max-w-lg leading-tight">Uma coleção para cada ocasião</h2>
+      </div>
+      <a href="#" onclick="return cardapioMsg(event)" class="ln text-sm font-semibold uppercase tracking-widest text-ink-900 whitespace-nowrap">Ver cardápio completo →</a>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-3 gap-x-6 gap-y-12">
+      <article class="reveal group">
+        <div class="imgwrap aspect-[3/4]"><img src="assets/ig-fruitcake.jpg" class="h-full w-full object-cover" alt="Bolos modernos"></div>
+        <div class="mt-4 flex items-baseline justify-between border-b border-ink-900/15 pb-3">
+          <h3 class="font-serif text-2xl text-ink-900">Bolos Modernos</h3>
+          <span class="eyebrow text-ink-500">01</span>
+        </div>
+        <p class="mt-3 text-sm font-light text-ink-500">Red velvet, frutas vermelhas e recheios contemporâneos.</p>
+      </article>
+      <article class="reveal d1 group">
+        <div class="imgwrap aspect-[3/4]"><img src="assets/ig-shagcake.jpg" class="h-full w-full object-cover" alt="Bolos decorados"></div>
+        <div class="mt-4 flex items-baseline justify-between border-b border-ink-900/15 pb-3">
+          <h3 class="font-serif text-2xl text-ink-900">Bolos Decorados</h3>
+          <span class="eyebrow text-ink-500">02</span>
+        </div>
+        <p class="mt-3 text-sm font-light text-ink-500">Autorais e temáticos, com design sob medida.</p>
+      </article>
+      <article class="reveal d2 group">
+        <div class="imgwrap aspect-[3/4]"><img src="assets/ig-merengue.jpg" class="h-full w-full object-cover" alt="Sobremesas"></div>
+        <div class="mt-4 flex items-baseline justify-between border-b border-ink-900/15 pb-3">
+          <h3 class="font-serif text-2xl text-ink-900">Sobremesas</h3>
+          <span class="eyebrow text-ink-500">03</span>
+        </div>
+        <p class="mt-3 text-sm font-light text-ink-500">Na travessa, de 6 a 10 porções · a partir de R$ 70.</p>
+      </article>
+      <article class="reveal group">
+        <div class="imgwrap aspect-[3/4]"><img src="assets/ig-brigadeiros.jpg" class="h-full w-full object-cover" alt="Brigadeiros gourmet"></div>
+        <div class="mt-4 flex items-baseline justify-between border-b border-ink-900/15 pb-3">
+          <h3 class="font-serif text-2xl text-ink-900">Brigadeiros Gourmet</h3>
+          <span class="eyebrow text-ink-500">04</span>
+        </div>
+        <p class="mt-3 text-sm font-light text-ink-500">Personalizados para eventos e lembranças.</p>
+      </article>
+      <article class="reveal d1 group">
+        <div class="imgwrap aspect-[3/4]"><img src="assets/chocotone-trufado.jpg" class="h-full w-full object-cover" alt="Chocotones"></div>
+        <div class="mt-4 flex items-baseline justify-between border-b border-ink-900/15 pb-3">
+          <h3 class="font-serif text-2xl text-ink-900">Chocotones</h3>
+          <span class="eyebrow text-ink-500">05</span>
+        </div>
+        <p class="mt-3 text-sm font-light text-ink-500">Artesanais e trufados · sazonal · a partir de R$ 34.</p>
+      </article>
+      <article class="reveal d2 bg-ink-900 text-cream-50 p-8 flex flex-col justify-between">
+        <div>
+          <span class="eyebrow text-pink-400">06</span>
+          <h3 class="mt-3 font-serif text-3xl leading-tight">Datas Especiais</h3>
+          <p class="mt-4 text-sm font-light text-cream-50/70">Coleções exclusivas para Natal, Páscoa, Dia das Mães e cada celebração que merece requinte.</p>
+        </div>
+        <a href="https://wa.me/5512981046072?text=Ol%C3%A1%20Dona%20Glac%C3%AA!%20Quero%20saber%20das%20cole%C3%A7%C3%B5es%20especiais." target="_blank" class="mt-8 inline-block text-[12px] font-semibold uppercase tracking-widest border-b border-pink-400 pb-1 w-max">Falar com a Monique</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA full-bleed editorial -->
+<section id="galeria" class="py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 sm:px-8">
+    <div class="text-center reveal max-w-xl mx-auto">
+      <p class="eyebrow text-pink-400">Portfólio</p>
+      <h2 class="mt-3 font-serif text-4xl sm:text-5xl text-ink-900">Feito para ser admirado</h2>
+    </div>
+  </div>
+  <div class="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-2 px-2">
+    <div class="imgwrap reveal aspect-[3/4]"><img src="assets/ig-floral.jpg" class="h-full w-full object-cover" alt=""></div>
+    <div class="imgwrap reveal d1 aspect-[3/4]"><img src="assets/ig-fruitcake.jpg" class="h-full w-full object-cover" alt=""></div>
+    <div class="imgwrap reveal d2 aspect-[3/4]"><img src="assets/ig-merengue.jpg" class="h-full w-full object-cover" alt=""></div>
+    <div class="imgwrap reveal d3 aspect-[3/4]"><img src="assets/chocotone-trufado.jpg" class="h-full w-full object-cover" alt=""></div>
+    <div class="imgwrap reveal aspect-[3/4]"><img src="assets/ig-shagcake.jpg" class="h-full w-full object-cover" alt=""></div>
+    <div class="imgwrap reveal d1 aspect-[3/4]"><img src="assets/ig-spiderman.jpg" class="h-full w-full object-cover" alt=""></div>
+    <div class="imgwrap reveal d2 aspect-[3/4]"><img src="assets/ig-minichocotone.jpg" class="h-full w-full object-cover" alt=""></div>
+    <div class="imgwrap reveal d3 aspect-[3/4]"><img src="assets/ig-brigadeiros.jpg" class="h-full w-full object-cover" alt=""></div>
+  </div>
+</section>
+
+<!-- ENCOMENDAR + FAQ -->
+<section id="encomendar" class="py-24 sm:py-32 bg-cream-100/50">
+  <div class="mx-auto max-w-7xl px-6 sm:px-8 grid lg:grid-cols-2 gap-16">
+    <div class="reveal">
+      <p class="eyebrow text-pink-400">O processo</p>
+      <h2 class="mt-3 font-serif text-4xl sm:text-5xl text-ink-900 leading-tight">Do pedido à retirada</h2>
+      <ol class="mt-10 space-y-8">
+        <li class="flex gap-5"><span class="font-serif text-3xl text-pink-400 leading-none">01</span><div><h3 class="font-serif text-xl text-ink-900">Converse pelo WhatsApp</h3><p class="mt-1 text-sm font-light text-ink-500">Conte a data, o tema e o número de pessoas.</p></div></li>
+        <li class="flex gap-5"><span class="font-serif text-3xl text-pink-400 leading-none">02</span><div><h3 class="font-serif text-xl text-ink-900">Receba seu orçamento</h3><p class="mt-1 text-sm font-light text-ink-500">Uma proposta sob medida, pensada para a sua ocasião.</p></div></li>
+        <li class="flex gap-5"><span class="font-serif text-3xl text-pink-400 leading-none">03</span><div><h3 class="font-serif text-xl text-ink-900">Garanta a sua data</h3><p class="mt-1 text-sm font-light text-ink-500">50% de sinal · Pix, cartão ou dinheiro.</p></div></li>
+        <li class="flex gap-5"><span class="font-serif text-3xl text-pink-400 leading-none">04</span><div><h3 class="font-serif text-xl text-ink-900">Retire e celebre</h3><p class="mt-1 text-sm font-light text-ink-500">No Bairro Caputera, próximo ao Assaí.</p></div></li>
+      </ol>
+    </div>
+    <div class="reveal d1">
+      <p class="eyebrow text-pink-400">Dúvidas</p>
+      <h2 class="mt-3 font-serif text-4xl sm:text-5xl text-ink-900 leading-tight">Perguntas frequentes</h2>
+      <div class="mt-8 divide-y divide-ink-900/12 border-t border-ink-900/12">
+        <details class="group py-5"><summary class="cursor-pointer flex justify-between items-center font-serif text-xl text-ink-900">Com quanta antecedência encomendar?<span class="text-pink-400 text-2xl font-sans group-open:rotate-45 transition">+</span></summary><p class="mt-3 text-sm font-light text-ink-500">Quanto antes, melhor. Datas concorridas e feriados têm vagas limitadas de produção.</p></details>
+        <details class="group py-5"><summary class="cursor-pointer flex justify-between items-center font-serif text-xl text-ink-900">Como funciona o pagamento?<span class="text-pink-400 text-2xl font-sans group-open:rotate-45 transition">+</span></summary><p class="mt-3 text-sm font-light text-ink-500">50% de sinal para agendar e o restante na retirada. Pix, cartão (link) e dinheiro. Confirmamos após o comprovante.</p></details>
+        <details class="group py-5"><summary class="cursor-pointer flex justify-between items-center font-serif text-xl text-ink-900">Fazem bolos temáticos e sobremesas grandes?<span class="text-pink-400 text-2xl font-sans group-open:rotate-45 transition">+</span></summary><p class="mt-3 text-sm font-light text-ink-500">Sim. Bolos decorados, modernos e sobremesas na travessa que servem de 6 a 10 porções.</p></details>
+        <details class="group py-5"><summary class="cursor-pointer flex justify-between items-center font-serif text-xl text-ink-900">Qual o horário de atendimento?<span class="text-pink-400 text-2xl font-sans group-open:rotate-45 transition">+</span></summary><p class="mt-3 text-sm font-light text-ink-500">De terça a sábado — respondemos rapidamente pelo WhatsApp.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<!-- (depoimentos ilustrativos para a maquete) -->
+<section class="py-24 sm:py-32">
+  <div class="mx-auto max-w-5xl px-6 text-center">
+    <p class="eyebrow text-pink-400 reveal">Experiências</p>
+    <blockquote class="reveal d1 mt-8 font-serif text-3xl sm:text-4xl leading-snug text-ink-900 italic">
+      "O bolo foi, sem exagero, a coisa mais linda e gostosa que servi numa festa.
+      A Dona Glacê entrega arte."
+    </blockquote>
+    <p class="reveal d2 mt-6 text-sm uppercase tracking-widest text-ink-500">Juliana P. · Caraguatatuba</p>
+    <div class="reveal d2 mt-14 grid sm:grid-cols-3 gap-10 text-left">
+      <div><div class="text-pink-400">★★★★★</div><p class="mt-3 font-light text-ink-500">"Chocotone trufado perfeito e atendimento impecável."</p><p class="mt-3 text-xs uppercase tracking-widest text-ink-700">Rafael M.</p></div>
+      <div><div class="text-pink-400">★★★★★</div><p class="mt-3 font-light text-ink-500">"Bolo da minha filha idêntico ao pedido. Me emocionei."</p><p class="mt-3 text-xs uppercase tracking-widest text-ink-700">Camila S.</p></div>
+      <div><div class="text-pink-400">★★★★★</div><p class="mt-3 font-light text-ink-500">"Sofisticado e delicioso. Virou tradição aqui em casa."</p><p class="mt-3 text-xs uppercase tracking-widest text-ink-700">Beatriz L.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL full-bleed -->
+<section class="relative">
+  <div class="imgwrap h-[60vh]"><img src="assets/ig-fruitcake.jpg" class="h-full w-full object-cover" alt=""></div>
+  <div class="absolute inset-0 bg-ink-900/55 grid place-content-center text-center px-6">
+    <div class="reveal max-w-xl">
+      <h2 class="font-serif text-4xl sm:text-6xl text-cream-50 leading-tight">Sua próxima celebração começa aqui</h2>
+      <a href="https://wa.me/5512981046072?text=Ol%C3%A1%20Dona%20Glac%C3%AA!%20Quero%20fazer%20uma%20encomenda." target="_blank"
+         class="btn-ink mt-8 inline-block bg-cream-50 text-ink-900 text-[12px] font-semibold uppercase tracking-widest px-10 py-4 hover:bg-pink-400 hover:text-white">
+        Fazer meu pedido
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink-900 text-cream-50/70 py-16">
+  <div class="mx-auto max-w-7xl px-6 sm:px-8 grid sm:grid-cols-4 gap-10">
+    <div class="sm:col-span-2">
+      <span class="font-serif text-3xl text-cream-50">Dona Glacê</span>
+      <p class="mt-4 text-sm font-light max-w-xs">Confeitaria autoral em Caraguatatuba. Bolos e doces sob encomenda, desde 2016.</p>
+    </div>
+    <div class="text-sm font-light">
+      <p class="eyebrow text-pink-400 mb-3">Contato</p>
+      <p><a href="https://wa.me/5512981046072" class="ln">(12) 98104-6072</a></p>
+      <p class="mt-1"><a href="https://instagram.com/donaglace" class="ln">@donaglace</a></p>
+      <p class="mt-1">Terça a Sábado</p>
+    </div>
+    <div class="text-sm font-light">
+      <p class="eyebrow text-pink-400 mb-3">Retirada</p>
+      <p>Bairro Caputera · próx. Assaí</p>
+      <p class="mt-1">Caraguatatuba — SP</p>
+    </div>
+  </div>
+  <div class="mx-auto max-w-7xl px-8 mt-12 pt-6 border-t border-white/10 text-xs uppercase tracking-widest text-cream-50/40">© 2026 Dona Glacê</div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/5512981046072?text=Ol%C3%A1%20Dona%20Glac%C3%AA!%20Vim%20pelo%20site." target="_blank"
+   class="fixed bottom-6 right-6 z-50 h-14 w-14 grid place-content-center rounded-full bg-[#25D366] text-white shadow-2xl hover:scale-110 transition">
+  <svg viewBox="0 0 24 24" class="h-7 w-7 fill-current"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.516 5.26l-.999 3.648 3.472-.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+<script>
+  const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  const hdr=document.getElementById('hdr'), bar=document.getElementById('hdrbar');
+  addEventListener('scroll',()=>{ const s=scrollY>30; hdr.classList.toggle('bg-cream-50/90',s); hdr.classList.toggle('backdrop-blur',s); hdr.classList.toggle('border-ink-900/10',s); bar.classList.toggle('h-16',s); bar.classList.toggle('h-20',!s); });
+  function cardapioMsg(e){ e.preventDefault(); alert('No site final, este link abre a página /cardapio com o menu completo e preços.'); return false; }
+</script>
+</body>
+</html>
