@@ -56,8 +56,19 @@ export default function Footer({ site }: { site: SiteSettings }) {
           <p className="mt-1">{site.textoPagamento}</p>
         </div>
       </div>
-      <div className="mx-auto mt-10 max-w-6xl border-t border-white/10 px-6 pt-6 text-center text-xs text-cream-100/70">
-        © {new Date().getFullYear()} Dona Glacê · Feito com ♥ em {site.cidade}
+      <div className="mx-auto mt-10 max-w-6xl space-y-1 border-t border-white/10 px-6 pt-6 text-center text-xs text-cream-100/70">
+        <p>© {new Date().getFullYear()} Dona Glacê · Feito com ♥ em {site.cidade}</p>
+        <p>
+          Desenvolvido por{" "}
+          <a
+            href="https://maxdigitalstudio.com.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-teal-300 transition hover:text-teal-100"
+          >
+            Max Digital Studio
+          </a>
+        </p>
       </div>
     </footer>
   );

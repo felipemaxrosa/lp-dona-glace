@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { urlFor } from "@/sanity/lib/image";
 import { wa } from "@/lib/site";
 import type { Hero as HeroData } from "@/lib/types";
@@ -49,12 +50,12 @@ export default function Hero({ data, phone }: { data: HeroData; phone: string })
             >
               Fazer meu pedido
             </a>
-            <a
-              href="#cardapio"
+            <Link
+              href="/cardapio"
               className="rounded-full border border-choco-400/25 bg-white/70 px-6 py-3 text-base font-bold text-choco-700 transition hover:bg-white"
             >
               Ver cardápio
-            </a>
+            </Link>
           </div>
           <div className="reveal d4 mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-choco-400 lg:justify-start">
             <span>⚡ Resposta rápida</span>
