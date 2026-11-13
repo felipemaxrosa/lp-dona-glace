@@ -1,6 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import { urlFor } from "@/sanity/lib/image";
+import SanityImage from "@/components/SanityImage";
 import type { Categoria, Produto } from "@/lib/types";
 import Top5 from "./Top5";
 
@@ -44,12 +43,11 @@ export default function CardapioHome({
                 >
                   <div className="gal relative h-44 overflow-hidden bg-cream-100">
                     {c.img ? (
-                      <Image
-                        src={urlFor(c.img).width(800).height(600).url()}
+                      <SanityImage
+                        img={c.img}
                         alt={c.img.alt ?? c.nome}
-                        fill
+                        aspect={3 / 4}
                         sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 360px"
-                        className="object-cover"
                       />
                     ) : null}
                     {c.badge ? (

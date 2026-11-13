@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
+import SanityImage from "@/components/SanityImage";
 import type { Sobre as SobreData } from "@/lib/types";
 
 export default function Sobre({ data }: { data: SobreData }) {
@@ -34,12 +33,11 @@ export default function Sobre({ data }: { data: SobreData }) {
         <div className="reveal d1 relative order-1 lg:order-2">
           <div className="relative aspect-[3/2] rotate-1 overflow-hidden rounded-[2rem] border-4 border-white shadow-2xl shadow-choco-900/20">
             {data.img ? (
-              <Image
-                src={urlFor(data.img).width(1200).height(800).url()}
+              <SanityImage
+                img={data.img}
                 alt={data.img.alt ?? "Monique Nery, da Dona Glacê"}
-                fill
+                aspect={2 / 3}
                 sizes="(max-width: 1024px) 92vw, 560px"
-                className="object-cover"
               />
             ) : null}
           </div>

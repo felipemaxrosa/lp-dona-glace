@@ -1,5 +1,5 @@
 import Link from "next/link";
-import HeroImage from "@/components/HeroImage";
+import SanityImage from "@/components/SanityImage";
 import { wa } from "@/lib/site";
 import type { Hero as HeroData } from "@/lib/types";
 
@@ -67,7 +67,14 @@ export default function Hero({ data, phone }: { data: HeroData; phone: string })
           <div className="floaty relative mx-auto w-[86%] max-w-sm">
             <div className="oval-frame lace relative aspect-[4/5] overflow-hidden bg-cream-100">
               {data.img ? (
-                <HeroImage img={data.img} alt={data.img.alt ?? "Bolo da Dona Glacê"} />
+                <SanityImage
+                  img={data.img}
+                  alt={data.img.alt ?? "Bolo da Dona Glacê"}
+                  aspect={1.25}
+                  priority
+                  seedWidth={840}
+                  sizes="(max-width: 1024px) 86vw, 420px"
+                />
               ) : null}
             </div>
             {data.notaBadge ? (
