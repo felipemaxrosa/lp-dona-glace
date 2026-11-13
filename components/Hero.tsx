@@ -34,21 +34,21 @@ export default function Hero({ data, phone }: { data: HeroData; phone: string })
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 pb-14 pt-12 sm:px-6 sm:pt-16 lg:grid-cols-2">
         <div className="text-center lg:text-left">
           {data.eyebrow ? (
-            <span className="hero-rise inline-flex items-center gap-2 rounded-full border border-gold-400/50 bg-cream-50 px-4 py-1.5 text-xs font-bold text-choco-400">
+            <span className="inline-flex items-center gap-2 rounded-full border border-gold-400/50 bg-cream-50 px-4 py-1.5 text-xs font-bold text-choco-400">
               <span className="text-gold-500">★★★★★</span> {data.eyebrow}
             </span>
           ) : null}
-          <h1 className="hero-rise d1 mt-5 font-display text-[2.5rem] leading-[1.04] text-choco-700 sm:text-6xl">
+          <h1 className="mt-5 font-display text-[2.5rem] leading-[1.04] text-choco-700 sm:text-6xl">
             {data.titulo}
             <br />
             <span className="font-script text-[3.2rem] text-pink-400 sm:text-7xl">
               {data.destaque}
             </span>
           </h1>
-          <p className="hero-rise d2 mx-auto mt-5 max-w-md text-lg text-choco-500/90 lg:mx-0">
+          <p className="mx-auto mt-5 max-w-md text-lg text-choco-500/90 lg:mx-0">
             {data.descricao}
           </p>
-          <div className="hero-rise d3 mt-7 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+          <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
             <a
               href={wa(phone, "Olá Dona Glacê! Quero fazer meu pedido 🍰")}
               target="_blank"
@@ -64,15 +64,15 @@ export default function Hero({ data, phone }: { data: HeroData; phone: string })
               Ver cardápio
             </Link>
           </div>
-          <div className="hero-rise d4 mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-choco-400 lg:justify-start">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-choco-400 lg:justify-start">
             <span>⚡ Resposta rápida</span>
             <span>🤍 Feito à mão</span>
             <span>🎁 Caixa personalizada</span>
           </div>
         </div>
 
-        <div className="hero-rise d2 relative">
-          <div className="floaty relative mx-auto w-[86%] max-w-sm">
+        <div className="relative">
+          <div className="relative mx-auto w-[86%] max-w-sm">
             <div className="oval-frame lace relative aspect-[4/5] overflow-hidden bg-cream-100">
               {heroSrc ? (
                 // eslint-disable-next-line @next/next/no-img-element
