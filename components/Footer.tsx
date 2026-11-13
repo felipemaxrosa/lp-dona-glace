@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { SiteSettings } from "@/lib/types";
 
 export default function Footer({ site }: { site: SiteSettings }) {
@@ -7,7 +6,8 @@ export default function Footer({ site }: { site: SiteSettings }) {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:grid-cols-3 sm:px-6">
         <div>
           <div className="flex items-center gap-2">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="/images/logo.jpg"
               alt="Dona Glacê"
               width={48}

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { NAV, wa } from "@/lib/site";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
@@ -28,12 +27,12 @@ export default function Header({ phone }: { phone: string }) {
       <header className="sticky top-0 z-50 border-b border-gold-400/30 bg-cream-50/90 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
           <Link href="/" onClick={() => setOpen(false)} className="flex items-center gap-2">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="/images/logo.jpg"
               alt="Dona Glacê"
               width={40}
               height={40}
-              priority
               className="h-10 w-10 rounded-full object-cover ring-2 ring-gold-400/60"
             />
             <span className="pt-1 font-script text-2xl leading-none text-choco-500">

@@ -1,11 +1,19 @@
 import Link from "next/link";
-import SanityImage from "@/components/SanityImage";
+import { sanityImg } from "@/sanity/lib/image";
 import { wa } from "@/lib/site";
 import type { Hero as HeroData } from "@/lib/types";
 
 export default function Hero({ data, phone }: { data: HeroData; phone: string }) {
+  // Elemento LCP: <img> simples (sem next/image), servido direto do Sanity e
+  // pré-carregado com prioridade alta — pinta no 1º render, sem depender de JS.
+  const heroSrc = data.img ? sanityImg(data.img, 1080, 1.25) : null;
+
   return (
     <section id="top" className="relative overflow-hidden">
+      {heroSrc ? (
+        // eslint-disable-next-line @next/next/no-head-element
+        <link rel="preload" as="image" href={heroSrc} fetchPriority="high" />
+      ) : null}
       <div
         aria-hidden
         className="absolute inset-0 -z-10"
@@ -66,14 +74,14 @@ export default function Hero({ data, phone }: { data: HeroData; phone: string })
         <div className="hero-rise d2 relative">
           <div className="floaty relative mx-auto w-[86%] max-w-sm">
             <div className="oval-frame lace relative aspect-[4/5] overflow-hidden bg-cream-100">
-              {data.img ? (
-                <SanityImage
-                  img={data.img}
-                  alt={data.img.alt ?? "Bolo da Dona Glacê"}
-                  aspect={1.25}
-                  priority
-                  seedWidth={840}
-                  sizes="(max-width: 1024px) 86vw, 420px"
+              {heroSrc ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={heroSrc}
+                  alt={data.img?.alt ?? "Bolo da Dona Glacê"}
+                  fetchPriority="high"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
               ) : null}
             </div>

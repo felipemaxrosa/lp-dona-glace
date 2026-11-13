@@ -21,18 +21,15 @@ export function productImageUrl(source: SanityImageSource) {
 }
 
 /**
- * Loader para o next/image servir a imagem DIRETO do cdn.sanity.io, sem passar pelo
- * otimizador da Vercel (/_next/image) — que, em cache frio, re-busca e re-encoda a
- * imagem e atrasa o LCP. O Sanity já entrega avif/webp sob demanda (auto=format).
+ * URL única (sem srcset) servida DIRETO do cdn.sanity.io em avif/webp (auto=format),
+ * respeitando hotspot/crop. Usada em <img> simples (sem next/image), para o elemento
+ * LCP pintar sem depender de JS/hidratação e tirar o runtime do next/image do bundle.
  *
- * `img`    = objeto de imagem do Sanity (respeita hotspot/crop).
- * `aspect` = altura/largura desejada (ex.: 4:5 → 1.25). O next/image chama o loader
- *            com cada largura do srcset, então o recorte acompanha a largura pedida.
+ * `w`      = largura pedida (o Sanity entrega nesse tamanho, já otimizado).
+ * `aspect` = altura/largura do recorte (ex.: 4:5 → 1.25, 3:2 → 2/3, 4:3 → 3/4).
  */
-export function sanityImageLoader(img: SanityImageSource, aspect?: number) {
-  return ({ width, quality }: { src: string; width: number; quality?: number }) => {
-    let b = builder.image(img).width(width).fit("crop").auto("format").quality(quality ?? 70);
-    if (aspect) b = b.height(Math.round(width * aspect));
-    return b.url();
-  };
+export function sanityImg(source: SanityImageSource, w: number, aspect?: number) {
+  let b = urlFor(source).width(w).quality(70);
+  if (aspect) b = b.height(Math.round(w * aspect));
+  return b.url();
 }

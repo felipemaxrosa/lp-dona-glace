@@ -1,5 +1,5 @@
 import Link from "next/link";
-import SanityImage from "@/components/SanityImage";
+import { sanityImg } from "@/sanity/lib/image";
 import type { Categoria, Produto } from "@/lib/types";
 import Top5 from "./Top5";
 
@@ -43,11 +43,13 @@ export default function CardapioHome({
                 >
                   <div className="gal relative h-44 overflow-hidden bg-cream-100">
                     {c.img ? (
-                      <SanityImage
-                        img={c.img}
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={sanityImg(c.img, 760, 3 / 4)}
                         alt={c.img.alt ?? c.nome}
-                        aspect={3 / 4}
-                        sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 360px"
+                        loading="lazy"
+                        decoding="async"
+                        className="absolute inset-0 h-full w-full object-cover"
                       />
                     ) : null}
                     {c.badge ? (
