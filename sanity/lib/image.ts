@@ -33,3 +33,12 @@ export function sanityImg(source: SanityImageSource, w: number, aspect?: number)
   if (aspect) b = b.height(Math.round(w * aspect));
   return b.url();
 }
+
+/**
+ * srcset ("url 480w, url 720w, ...") para <img> responsivo servido direto do Sanity.
+ * Com `sizes`, o navegador baixa só a largura adequada ao display/DPR — resolve o
+ * "properly size images" do Lighthouse sem next/image.
+ */
+export function sanitySrcSet(source: SanityImageSource, widths: number[], aspect?: number) {
+  return widths.map((w) => `${sanityImg(source, w, aspect)} ${w}w`).join(", ");
+}

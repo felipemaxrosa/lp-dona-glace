@@ -1,4 +1,4 @@
-import { sanityImg } from "@/sanity/lib/image";
+import { sanityImg, sanitySrcSet } from "@/sanity/lib/image";
 import type { Sobre as SobreData } from "@/lib/types";
 
 export default function Sobre({ data }: { data: SobreData }) {
@@ -35,7 +35,9 @@ export default function Sobre({ data }: { data: SobreData }) {
             {data.img ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                src={sanityImg(data.img, 1120, 2 / 3)}
+                src={sanityImg(data.img, 900, 2 / 3)}
+                srcSet={sanitySrcSet(data.img, [480, 640, 900], 2 / 3)}
+                sizes="(max-width: 1024px) 92vw, 560px"
                 alt={data.img.alt ?? "Monique Nery, da Dona Glacê"}
                 loading="lazy"
                 decoding="async"

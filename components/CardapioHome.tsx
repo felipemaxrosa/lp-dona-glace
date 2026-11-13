@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { sanityImg } from "@/sanity/lib/image";
+import { sanityImg, sanitySrcSet } from "@/sanity/lib/image";
 import type { Categoria, Produto } from "@/lib/types";
 import Top5 from "./Top5";
 
@@ -45,7 +45,9 @@ export default function CardapioHome({
                     {c.img ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
-                        src={sanityImg(c.img, 760, 3 / 4)}
+                        src={sanityImg(c.img, 640, 3 / 4)}
+                        srcSet={sanitySrcSet(c.img, [360, 480, 640], 3 / 4)}
+                        sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 360px"
                         alt={c.img.alt ?? c.nome}
                         loading="lazy"
                         decoding="async"

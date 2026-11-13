@@ -87,9 +87,11 @@ export default function RootLayout({
       className={`${playfair.variable} ${parisienne.variable} ${nunito.variable}`}
     >
       <head>
-        {/* a imagem do hero (LCP) é servida direto do cdn.sanity.io — adiantar a
-            conexão (DNS+TLS) corta a latência do primeiro recurso crítico */}
-        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        {/* a imagem do hero (LCP) vem do cdn.sanity.io via <img> simples (no-cors).
+            Preconnect SEM crossorigin pra casar com essa requisição e a conexão
+            pré-aberta ser de fato reaproveitada (DNS+TLS adiantados). */}
+        <link rel="preconnect" href="https://cdn.sanity.io" />
+        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
       </head>
       <body>{children}</body>
     </html>
