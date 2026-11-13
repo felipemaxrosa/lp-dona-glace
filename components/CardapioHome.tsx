@@ -1,16 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { urlFor } from "@/sanity/lib/image";
-import { wa } from "@/lib/site";
-import { precoLabel } from "@/lib/format";
 import type { Categoria, Produto } from "@/lib/types";
-
-function pedirLink(phone: string, p: Produto) {
-  const msg = p.msg?.trim()
-    ? `Olá Dona Glacê! ${p.msg}`
-    : `Olá Dona Glacê! Quero ${p.nome} 🍰`;
-  return wa(phone, msg);
-}
+import Top5 from "./Top5";
 
 export default function CardapioHome({
   categorias,
@@ -34,63 +26,10 @@ export default function CardapioHome({
           </p>
         </div>
 
-        {/* 5 MAIS PEDIDOS */}
-        {top5.length ? (
-          <div className="reveal mt-12">
-            <div className="mb-6 flex items-center justify-center gap-3">
-              <span className="h-px w-10 bg-gold-400/60" />
-              <h3 className="font-display text-2xl text-choco-700">⭐ Os 5 mais pedidos</h3>
-              <span className="h-px w-10 bg-gold-400/60" />
-            </div>
-            <ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
-              {top5.map((p) => (
-                <li
-                  key={p.slug ?? p.nome}
-                  className="card-lift relative overflow-hidden rounded-3xl border border-gold-400/30 bg-cream-50 shadow-sm"
-                >
-                  <span className="absolute left-2 top-2 z-10 grid h-7 w-7 place-content-center rounded-full bg-pink-600 text-sm font-bold text-white shadow">
-                    {p.top5}
-                  </span>
-                  {p.top5 === 1 ? (
-                    <span className="absolute right-2 top-2 z-10 rounded-full bg-gold-500 px-2 py-0.5 text-[10px] font-bold text-choco-900 shadow">
-                      mais pedido
-                    </span>
-                  ) : null}
-                  <div className="gal relative h-36 overflow-hidden bg-cream-100">
-                    {p.img ? (
-                      <Image
-                        src={urlFor(p.img).width(600).height(600).url()}
-                        alt={p.img.alt ?? p.nome}
-                        fill
-                        sizes="(max-width: 768px) 45vw, (max-width: 1024px) 30vw, 210px"
-                        className="object-cover"
-                      />
-                    ) : null}
-                  </div>
-                  <div className="p-3">
-                    <h4 className="font-display text-base leading-tight text-choco-700">
-                      {p.nome}
-                    </h4>
-                    <p className="mt-0.5 text-sm font-bold text-pink-400">{precoLabel(p)}</p>
-                    <a
-                      href={pedirLink(phone, p)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-bold text-choco-400 transition hover:text-pink-400"
-                    >
-                      Pedir →
-                    </a>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-3 text-center text-xs text-choco-400/70">
-              definido no painel pela Monique
-            </p>
-          </div>
-        ) : null}
+        {/* 5 mais pedidos (cliente — imagem clicável abre o lightbox) */}
+        <Top5 top5={top5} phone={phone} />
 
-        {/* CATEGORIAS */}
+        {/* Categorias */}
         {categorias.length ? (
           <div className="reveal mt-14">
             <h3 className="mb-6 text-center font-display text-2xl text-choco-700">
