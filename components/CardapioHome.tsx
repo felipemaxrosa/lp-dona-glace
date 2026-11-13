@@ -1,9 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
+import { urlFor } from "@/sanity/lib/image";
 import { wa } from "@/lib/site";
-import { MAIS_PEDIDOS, CATEGORIAS } from "@/lib/menu";
+import { precoLabel } from "@/lib/format";
+import type { Categoria, Produto } from "@/lib/types";
 
-export default function CardapioHome() {
+function pedirLink(phone: string, p: Produto) {
+  const msg = p.msg?.trim()
+    ? `Olá Dona Glacê! ${p.msg}`
+    : `Olá Dona Glacê! Quero ${p.nome} 🍰`;
+  return wa(phone, msg);
+}
+
+export default function CardapioHome({
+  categorias,
+  top5,
+  phone,
+}: {
+  categorias: Categoria[];
+  top5: Produto[];
+  phone: string;
+}) {
   return (
     <section id="cardapio" className="bg-teal-100/60 py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -18,112 +35,105 @@ export default function CardapioHome() {
         </div>
 
         {/* 5 MAIS PEDIDOS */}
-        <div className="reveal mt-12">
-          <div className="mb-6 flex items-center justify-center gap-3">
-            <span className="h-px w-10 bg-gold-400/60" />
-            <h3 className="font-display text-2xl text-choco-700">
-              ⭐ Os 5 mais pedidos
-            </h3>
-            <span className="h-px w-10 bg-gold-400/60" />
-          </div>
-          <ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
-            {MAIS_PEDIDOS.map((p) => (
-              <li
-                key={p.rank}
-                className="card-lift relative overflow-hidden rounded-3xl border border-gold-400/30 bg-cream-50 shadow-sm"
-              >
-                <span className="absolute left-2 top-2 z-10 grid h-7 w-7 place-content-center rounded-full bg-pink-600 text-sm font-bold text-white shadow">
-                  {p.rank}
-                </span>
-                {"badge" in p && p.badge ? (
-                  <span className="absolute right-2 top-2 z-10 rounded-full bg-gold-500 px-2 py-0.5 text-[10px] font-bold text-choco-900 shadow">
-                    {p.badge}
+        {top5.length ? (
+          <div className="reveal mt-12">
+            <div className="mb-6 flex items-center justify-center gap-3">
+              <span className="h-px w-10 bg-gold-400/60" />
+              <h3 className="font-display text-2xl text-choco-700">⭐ Os 5 mais pedidos</h3>
+              <span className="h-px w-10 bg-gold-400/60" />
+            </div>
+            <ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
+              {top5.map((p) => (
+                <li
+                  key={p.slug ?? p.nome}
+                  className="card-lift relative overflow-hidden rounded-3xl border border-gold-400/30 bg-cream-50 shadow-sm"
+                >
+                  <span className="absolute left-2 top-2 z-10 grid h-7 w-7 place-content-center rounded-full bg-pink-600 text-sm font-bold text-white shadow">
+                    {p.top5}
                   </span>
-                ) : null}
-                <div className="gal relative h-36 overflow-hidden">
-                  <Image
-                    src={p.image.src}
-                    alt={p.image.alt}
-                    fill
-                    sizes="(max-width: 768px) 45vw, (max-width: 1024px) 30vw, 210px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-3">
-                  <h4 className="font-display text-base leading-tight text-choco-700">
-                    {p.name}
-                  </h4>
-                  <p className="mt-0.5 text-sm font-bold text-pink-400">{p.price}</p>
-                  <a
-                    href={wa(`Olá Dona Glacê! ${p.msg}`)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-bold text-choco-400 transition hover:text-pink-400"
-                  >
-                    Pedir →
-                  </a>
-                </div>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-3 text-center text-xs text-choco-400/70">
-            seleção ilustrativa — confirmamos os campeões com a Monique
-          </p>
-        </div>
-
-        {/* CATEGORIAS */}
-        <div className="reveal mt-14">
-          <h3 className="mb-6 text-center font-display text-2xl text-choco-700">
-            Explore por categoria
-          </h3>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {CATEGORIAS.map((c) => (
-              <Link
-                key={c.name}
-                href={`/cardapio#${c.catalogId}`}
-                className="card-lift group block overflow-hidden rounded-3xl border border-gold-400/30 bg-cream-50 shadow-sm"
-              >
-                <div className="gal relative h-44 overflow-hidden">
-                  <Image
-                    src={c.image.src}
-                    alt={c.image.alt}
-                    fill
-                    sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 360px"
-                    className="object-cover"
-                  />
-                  {"badge" in c && c.badge ? (
-                    <span className="absolute right-3 top-3 rounded-full bg-teal-300 px-3 py-1 text-xs font-bold text-choco-900">
-                      {c.badge}
+                  {p.top5 === 1 ? (
+                    <span className="absolute right-2 top-2 z-10 rounded-full bg-gold-500 px-2 py-0.5 text-[10px] font-bold text-choco-900 shadow">
+                      mais pedido
                     </span>
                   ) : null}
-                </div>
-                <div className="p-5">
-                  <h4 className="font-display text-xl text-choco-700">{c.name}</h4>
-                  <p className="mt-1.5 text-sm text-choco-500/90">{c.desc}</p>
-                  <span className="mt-3 inline-block text-sm font-bold text-pink-400 transition group-hover:text-pink-500">
-                    Ver no cardápio →
-                  </span>
-                </div>
-              </Link>
-            ))}
-
-            <Link
-              href="/cardapio#datas-especiais"
-              className="card-lift group flex flex-col justify-center rounded-3xl border border-gold-400/30 bg-choco-700 p-6 text-center text-cream-50 shadow-sm"
-            >
-              <span className="font-script text-3xl text-teal-300">datas especiais</span>
-              <p className="mt-2 text-sm text-cream-100/90">
-                Natal, Páscoa, Dia das Mães e cada celebração que merece um doce de
-                verdade.
-              </p>
-              <span className="mt-4 inline-block text-sm font-bold text-teal-300 transition group-hover:text-teal-100">
-                Ver no cardápio →
-              </span>
-            </Link>
+                  <div className="gal relative h-36 overflow-hidden bg-cream-100">
+                    {p.img ? (
+                      <Image
+                        src={urlFor(p.img).width(600).height(600).url()}
+                        alt={p.img.alt ?? p.nome}
+                        fill
+                        sizes="(max-width: 768px) 45vw, (max-width: 1024px) 30vw, 210px"
+                        className="object-cover"
+                      />
+                    ) : null}
+                  </div>
+                  <div className="p-3">
+                    <h4 className="font-display text-base leading-tight text-choco-700">
+                      {p.nome}
+                    </h4>
+                    <p className="mt-0.5 text-sm font-bold text-pink-400">{precoLabel(p)}</p>
+                    <a
+                      href={pedirLink(phone, p)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-bold text-choco-400 transition hover:text-pink-400"
+                    >
+                      Pedir →
+                    </a>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-3 text-center text-xs text-choco-400/70">
+              definido no painel pela Monique
+            </p>
           </div>
-        </div>
+        ) : null}
 
-        {/* VER CARDÁPIO COMPLETO */}
+        {/* CATEGORIAS */}
+        {categorias.length ? (
+          <div className="reveal mt-14">
+            <h3 className="mb-6 text-center font-display text-2xl text-choco-700">
+              Explore por categoria
+            </h3>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {categorias.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/cardapio#${c.slug}`}
+                  className="card-lift group block overflow-hidden rounded-3xl border border-gold-400/30 bg-cream-50 shadow-sm"
+                >
+                  <div className="gal relative h-44 overflow-hidden bg-cream-100">
+                    {c.img ? (
+                      <Image
+                        src={urlFor(c.img).width(800).height(600).url()}
+                        alt={c.img.alt ?? c.nome}
+                        fill
+                        sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 360px"
+                        className="object-cover"
+                      />
+                    ) : null}
+                    {c.badge ? (
+                      <span className="absolute right-3 top-3 rounded-full bg-teal-300 px-3 py-1 text-xs font-bold text-choco-900">
+                        {c.badge}
+                      </span>
+                    ) : null}
+                  </div>
+                  <div className="p-5">
+                    <h4 className="font-display text-xl text-choco-700">{c.nome}</h4>
+                    {c.descricao ? (
+                      <p className="mt-1.5 text-sm text-choco-500/90">{c.descricao}</p>
+                    ) : null}
+                    <span className="mt-3 inline-block text-sm font-bold text-pink-400 transition group-hover:text-pink-500">
+                      Ver no cardápio →
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
         <div className="reveal mt-12 text-center">
           <Link
             href="/cardapio"

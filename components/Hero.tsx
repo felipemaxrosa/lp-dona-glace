@@ -1,8 +1,9 @@
 import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 import { wa } from "@/lib/site";
-import { IMAGES } from "@/lib/menu";
+import type { Hero as HeroData } from "@/lib/types";
 
-export default function Hero() {
+export default function Hero({ data, phone }: { data: HeroData; phone: string }) {
   return (
     <section id="top" className="relative overflow-hidden">
       <div
@@ -24,24 +25,24 @@ export default function Hero() {
 
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 pb-14 pt-12 sm:px-6 sm:pt-16 lg:grid-cols-2">
         <div className="text-center lg:text-left">
-          <span className="reveal inline-flex items-center gap-2 rounded-full border border-gold-400/50 bg-cream-50 px-4 py-1.5 text-xs font-bold text-choco-400">
-            <span className="text-gold-500">★★★★★</span> +2 mil clientes adoçados desde 2016
-          </span>
+          {data.eyebrow ? (
+            <span className="reveal inline-flex items-center gap-2 rounded-full border border-gold-400/50 bg-cream-50 px-4 py-1.5 text-xs font-bold text-choco-400">
+              <span className="text-gold-500">★★★★★</span> {data.eyebrow}
+            </span>
+          ) : null}
           <h1 className="reveal d1 mt-5 font-display text-[2.5rem] leading-[1.04] text-choco-700 sm:text-6xl">
-            O doce que vai ser o
+            {data.titulo}
             <br />
             <span className="font-script text-[3.2rem] text-pink-400 sm:text-7xl">
-              astro da sua festa
+              {data.destaque}
             </span>
           </h1>
           <p className="reveal d2 mx-auto mt-5 max-w-md text-lg text-choco-500/90 lg:mx-0">
-            Bolos, sobremesas e chocotones artesanais que fazem todo mundo
-            perguntar <em>&ldquo;de quem é esse doce?&rdquo;</em>. Feitos à mão
-            pela Monique, em Caraguatatuba.
+            {data.descricao}
           </p>
           <div className="reveal d3 mt-7 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
             <a
-              href={wa("Olá Dona Glacê! Quero fazer meu pedido 🍰")}
+              href={wa(phone, "Olá Dona Glacê! Quero fazer meu pedido 🍰")}
               target="_blank"
               rel="noopener noreferrer"
               className="pulse rounded-full bg-pink-600 px-6 py-3 text-base font-bold text-white shadow-lg shadow-pink-400/30 transition hover:bg-pink-700"
@@ -65,24 +66,29 @@ export default function Hero() {
         <div className="reveal d2 relative">
           <div className="floaty relative mx-auto w-[86%] max-w-sm">
             <div className="oval-frame lace relative aspect-[4/5] overflow-hidden bg-cream-100">
-              <Image
-                src={IMAGES.fruitcake.src}
-                alt={IMAGES.fruitcake.alt}
-                fill
-                priority
-                sizes="(max-width: 1024px) 86vw, 420px"
-                className="object-cover"
-              />
+              {data.img ? (
+                <Image
+                  src={urlFor(data.img).width(840).height(1050).url()}
+                  alt={data.img.alt ?? "Bolo da Dona Glacê"}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 86vw, 420px"
+                  className="object-cover"
+                />
+              ) : null}
             </div>
-            <div className="absolute -top-3 -right-1 rotate-6 rounded-2xl bg-gold-500 px-4 py-2 text-sm font-bold text-choco-900 shadow-xl">
-              ⭐ Nota 5,0
-            </div>
-            <div className="absolute -bottom-4 -left-2 -rotate-3 rounded-2xl bg-white px-4 py-2.5 shadow-xl">
-              <p className="text-[11px] font-semibold leading-none text-choco-400">
-                sobremesas a partir de
-              </p>
-              <p className="font-display text-2xl leading-tight text-pink-400">R$ 70</p>
-            </div>
+            {data.notaBadge ? (
+              <div className="absolute -top-3 -right-1 rotate-6 rounded-2xl bg-gold-500 px-4 py-2 text-sm font-bold text-choco-900 shadow-xl">
+                ⭐ {data.notaBadge}
+              </div>
+            ) : null}
+            {data.precoBadge ? (
+              <div className="absolute -bottom-4 -left-2 -rotate-3 rounded-2xl bg-white px-4 py-2.5 shadow-xl">
+                <p className="max-w-[9rem] text-sm font-bold leading-tight text-pink-400">
+                  {data.precoBadge}
+                </p>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

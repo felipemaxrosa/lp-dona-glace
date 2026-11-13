@@ -2,10 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Parisienne, Nunito } from "next/font/google";
 import "./globals.css";
 import { SITE_URL, BUSINESS } from "@/lib/site";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import WhatsappFab from "@/components/WhatsappFab";
-import RevealInit from "@/components/RevealInit";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -81,37 +77,6 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Bakery",
-  "@id": SITE_URL,
-  name: "Dona Glacê",
-  alternateName: "Dona Glacê Confeitaria",
-  description: BUSINESS.description,
-  url: SITE_URL,
-  image: `${SITE_URL}/images/ig-fruitcake.jpg`,
-  logo: `${SITE_URL}/images/logo.jpg`,
-  telephone: `+${BUSINESS.phoneIntl}`,
-  priceRange: "$$",
-  servesCuisine: "Confeitaria, Bolos e Doces",
-  foundingDate: "2016",
-  founder: { "@type": "Person", name: BUSINESS.owner },
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: BUSINESS.city,
-    addressRegion: BUSINESS.state,
-    addressCountry: "BR",
-  },
-  areaServed: { "@type": "City", name: BUSINESS.city },
-  sameAs: [BUSINESS.instagramUrl],
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    },
-  ],
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -121,22 +86,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${playfair.variable} ${parisienne.variable} ${nunito.variable}`}
     >
-      <body>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: "document.documentElement.classList.add('js')",
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <WhatsappFab />
-        <RevealInit />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

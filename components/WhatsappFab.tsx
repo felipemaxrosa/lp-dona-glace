@@ -1,10 +1,10 @@
-import { WA_DEFAULT } from "@/lib/site";
+import { wa } from "@/lib/site";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
-export default function WhatsappFab() {
+export default function WhatsappFab({ phone }: { phone: string }) {
   return (
     <a
-      href={WA_DEFAULT}
+      href={wa(phone, "Olá Dona Glacê! Vim pelo site e quero fazer um pedido 🍰")}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Pedir agora pelo WhatsApp"

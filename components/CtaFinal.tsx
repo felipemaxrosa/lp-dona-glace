@@ -1,6 +1,6 @@
 import { wa } from "@/lib/site";
 
-export default function CtaFinal() {
+export default function CtaFinal({ phone }: { phone: string }) {
   return (
     <section className="bg-cream-50 py-16 sm:py-20">
       <div className="reveal mx-auto max-w-4xl px-4 sm:px-6">
@@ -20,18 +20,16 @@ export default function CtaFinal() {
             }}
           />
           <div className="relative text-white">
-            <span className="font-script text-3xl text-cream-50">
-              não perca sua data
-            </span>
+            <span className="font-script text-3xl text-cream-50">não perca sua data</span>
             <h2 className="mt-1 font-display text-3xl sm:text-4xl">
               Sua data pode esgotar essa semana ⏳
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-white/90">
-              Não arrisque ficar sem. Fale com a Monique agora e garanta o doce
-              que vai roubar a cena. 🤍
+              Não arrisque ficar sem. Fale com a Monique agora e garanta o doce que vai
+              roubar a cena. 🤍
             </p>
             <a
-              href={wa("Olá Dona Glacê! Quero garantir minha data 🍰")}
+              href={wa(phone, "Olá Dona Glacê! Quero garantir minha data 🍰")}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-7 inline-block rounded-full bg-white px-8 py-4 font-extrabold text-pink-500 shadow-lg transition hover:bg-cream-50"

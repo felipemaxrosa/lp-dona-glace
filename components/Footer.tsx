@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { BUSINESS } from "@/lib/site";
+import type { SiteSettings } from "@/lib/types";
 
-export default function Footer() {
+export default function Footer({ site }: { site: SiteSettings }) {
   return (
     <footer className="bg-choco-900 pb-8 pt-14 text-cream-100/80">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:grid-cols-3 sm:px-6">
@@ -17,8 +17,8 @@ export default function Footer() {
             <span className="font-script text-3xl text-cream-50">Dona Glacê</span>
           </div>
           <p className="mt-4 text-sm">
-            Confeitaria artesanal em {BUSINESS.city}. Bolos e doces feitos à mão
-            desde {BUSINESS.since}. Adoce seu dia. 🤍
+            Confeitaria artesanal em {site.cidade}. Bolos e doces feitos à mão desde
+            2016. Adoce seu dia. 🤍
           </p>
         </div>
 
@@ -27,39 +27,37 @@ export default function Footer() {
           <p>
             WhatsApp:{" "}
             <a
-              href={`https://wa.me/${BUSINESS.phoneIntl}`}
+              href={`https://wa.me/${site.telefoneIntl}`}
               className="text-teal-300 transition hover:text-teal-100"
             >
-              {BUSINESS.phoneDisplay}
+              {site.telefoneDisplay}
             </a>
           </p>
           <p className="mt-1">
             Instagram:{" "}
             <a
-              href={BUSINESS.instagramUrl}
+              href={`https://instagram.com/${site.instagram}`}
               className="text-teal-300 transition hover:text-teal-100"
             >
-              @{BUSINESS.instagram}
+              @{site.instagram}
             </a>
           </p>
-          <p className="mt-1">Atendimento: {BUSINESS.hours}</p>
+          <p className="mt-1">Atendimento: {site.horario}</p>
         </div>
 
         <div className="text-sm">
           <h2 className="mb-3 font-display text-lg text-cream-50">Retirada</h2>
           <p>
-            {BUSINESS.neighborhood} — {BUSINESS.reference}
+            {site.bairro} — {site.referencia}
           </p>
           <p className="mt-1">
-            {BUSINESS.city} · {BUSINESS.state}
+            {site.cidade} · {site.uf}
           </p>
-          <p className="mt-1">
-            Agendamento com 50% de sinal · Pix, cartão e dinheiro
-          </p>
+          <p className="mt-1">{site.textoPagamento}</p>
         </div>
       </div>
       <div className="mx-auto mt-10 max-w-6xl border-t border-white/10 px-6 pt-6 text-center text-xs text-cream-100/70">
-        © {new Date().getFullYear()} Dona Glacê · Feito com ♥ em {BUSINESS.city}
+        © {new Date().getFullYear()} Dona Glacê · Feito com ♥ em {site.cidade}
       </div>
     </footer>
   );
