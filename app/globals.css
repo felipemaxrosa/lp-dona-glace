@@ -72,6 +72,19 @@ body {
 .reveal.d3 { transition-delay: 0.24s; }
 .reveal.d4 { transition-delay: 0.32s; }
 
+/* Entrada do hero (acima da dobra): anima só o transform, opacity fica 1 o tempo todo.
+   Assim o conteúdo é pintado no 1º frame (não depende do JS) e não atrasa o LCP,
+   mantendo a entrada suave. Difere do .reveal, que esconde até o IntersectionObserver. */
+.hero-rise { animation: heroRise 0.7s var(--ease) both; }
+.hero-rise.d1 { animation-delay: 0.06s; }
+.hero-rise.d2 { animation-delay: 0.12s; }
+.hero-rise.d3 { animation-delay: 0.18s; }
+.hero-rise.d4 { animation-delay: 0.24s; }
+@keyframes heroRise {
+  from { transform: translateY(16px); }
+  to { transform: none; }
+}
+
 .card-lift {
   transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
@@ -134,6 +147,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1 !important; transform: none !important; }
+  .hero-rise { animation: none !important; }
   .floaty, .pulse { animation: none !important; }
   html { scroll-behavior: auto; }
 }

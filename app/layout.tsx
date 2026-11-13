@@ -86,6 +86,11 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${playfair.variable} ${parisienne.variable} ${nunito.variable}`}
     >
+      <head>
+        {/* a imagem do hero (LCP) é servida direto do cdn.sanity.io — adiantar a
+            conexão (DNS+TLS) corta a latência do primeiro recurso crítico */}
+        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+      </head>
       <body>{children}</body>
     </html>
   );
