@@ -44,7 +44,7 @@ export default function Hero({ data, phone }: { data: HeroData; phone: string })
         }}
       />
 
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 pb-14 pt-12 sm:px-6 sm:pt-16 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-6xl items-center gap-6 px-4 pb-14 pt-12 sm:px-6 sm:pt-16 lg:grid-cols-2">
         <div className="text-center lg:text-left">
           {data.eyebrow ? (
             <span className="hero-rise inline-flex items-center gap-2 rounded-full border border-gold-400/50 bg-cream-50 px-4 py-1.5 text-xs font-bold text-choco-400">
