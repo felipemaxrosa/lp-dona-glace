@@ -10,8 +10,10 @@ const HERO_WIDTHS = [420, 560, 720, 900];
 const HERO_SIZES = "(max-width: 1024px) 86vw, 420px";
 
 export default function Hero({ data, phone }: { data: HeroData; phone: string }) {
-  const heroSrc = data.img ? sanityImg(data.img, 900, 1.25) : null;
-  const heroSrcSet = data.img ? sanitySrcSet(data.img, HERO_WIDTHS, 1.25) : null;
+  // q=82 no hero (um pouco acima do padrão 70) para a foto do LCP ficar mais nítida;
+  // custo de bytes pequeno porque a largura máxima é 900px.
+  const heroSrc = data.img ? sanityImg(data.img, 900, 1.25, 82) : null;
+  const heroSrcSet = data.img ? sanitySrcSet(data.img, HERO_WIDTHS, 1.25, 82) : null;
 
   return (
     <section id="top" className="relative overflow-hidden">

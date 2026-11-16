@@ -28,8 +28,8 @@ export function productImageUrl(source: SanityImageSource) {
  * `w`      = largura pedida (o Sanity entrega nesse tamanho, já otimizado).
  * `aspect` = altura/largura do recorte (ex.: 4:5 → 1.25, 3:2 → 2/3, 4:3 → 3/4).
  */
-export function sanityImg(source: SanityImageSource, w: number, aspect?: number) {
-  let b = urlFor(source).width(w).quality(70);
+export function sanityImg(source: SanityImageSource, w: number, aspect?: number, q = 70) {
+  let b = urlFor(source).width(w).quality(q);
   if (aspect) b = b.height(Math.round(w * aspect));
   return b.url();
 }
@@ -39,6 +39,6 @@ export function sanityImg(source: SanityImageSource, w: number, aspect?: number)
  * Com `sizes`, o navegador baixa só a largura adequada ao display/DPR — resolve o
  * "properly size images" do Lighthouse sem next/image.
  */
-export function sanitySrcSet(source: SanityImageSource, widths: number[], aspect?: number) {
-  return widths.map((w) => `${sanityImg(source, w, aspect)} ${w}w`).join(", ");
+export function sanitySrcSet(source: SanityImageSource, widths: number[], aspect?: number, q = 70) {
+  return widths.map((w) => `${sanityImg(source, w, aspect, q)} ${w}w`).join(", ");
 }
