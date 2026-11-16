@@ -1,0 +1,358 @@
+.wrap {
+  --bg: #fbf6ee;
+  --surface: #ffffff;
+  --ink: #3e2a24;
+  --body: #5c463e;
+  --muted: #93817a;
+  --pink: #c81e74;
+  --pink700: #a81561;
+  --gold: #c9a24a;
+  --teal: #2d6e6b;
+  --line: #ece2d4;
+  --cream2: #fdf0e4;
+
+  min-height: 100dvh;
+  background:
+    radial-gradient(#d8b25722 1.2px, transparent 1.3px) 0 0 / 24px 24px,
+    linear-gradient(180deg, #fdf9f3 0%, var(--bg) 42%);
+  color: var(--body);
+  font-family: var(--font-body), "Nunito", system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding-left: max(18px, env(safe-area-inset-left, 0px));
+  padding-right: max(18px, env(safe-area-inset-right, 0px));
+  padding-block: clamp(2.5rem, 7vw, 4.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.25rem, 6vw, 3.25rem);
+}
+
+.eyebrow {
+  margin: 0;
+  font-weight: 800;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.script {
+  font-family: var(--font-script), "Parisienne", cursive;
+  color: var(--pink);
+  line-height: 1;
+}
+.title {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: clamp(2.1rem, 7vw, 3.1rem);
+  line-height: 1.08;
+  text-wrap: balance;
+}
+.h2 {
+  margin: 0;
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  color: var(--ink);
+  font-size: clamp(1.5rem, 4.5vw, 1.9rem);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+.heroNote {
+  margin: 1.1rem 0 0;
+  font-size: 1.06rem;
+}
+.hero .script {
+  font-size: clamp(1.9rem, 6vw, 2.6rem);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.sectionHead {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.sectionHead .script {
+  font-size: 1.6rem;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.incl {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.05rem 1.15rem;
+}
+.ic {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.7rem;
+  display: grid;
+  place-content: center;
+  font-size: 1.3rem;
+  background: var(--cream2);
+}
+.min {
+  min-width: 0;
+}
+.inclTitle {
+  margin: 0 0 0.15rem;
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 1.1rem;
+}
+.inclText {
+  margin: 0;
+  font-size: 0.97rem;
+}
+
+.priceCard {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--gold);
+  border-radius: 1.25rem;
+  padding: clamp(1.4rem, 5vw, 2rem);
+  box-shadow: 0 18px 44px -28px rgba(62, 42, 36, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  text-align: center;
+}
+.tag {
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.priceNow {
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: clamp(2.8rem, 11vw, 3.8rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.priceNow small {
+  font-size: 0.4em;
+  font-weight: 600;
+  color: var(--muted);
+}
+.priceWas {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+.priceWas s {
+  text-decoration-color: var(--pink);
+}
+.badgeFree {
+  margin-top: 0.35rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #eaf3f2;
+  color: var(--teal);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: 999px;
+}
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.col {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-width: 0;
+}
+.colYou {
+  border-color: var(--gold);
+  background: #fffdf8;
+}
+.colHead {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 800;
+}
+.colYou .colHead {
+  color: var(--pink700);
+}
+.li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.96rem;
+  align-items: baseline;
+}
+.li > span:last-child {
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.liTotal {
+  border-top: 1px dashed var(--line);
+  padding-top: 0.6rem;
+  margin-top: 0.1rem;
+}
+.liTotal > span:first-child {
+  font-weight: 700;
+  color: var(--ink);
+}
+.dim {
+  color: var(--muted);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.step {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.05rem 1.15rem;
+}
+.n {
+  flex: 0 0 auto;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  display: grid;
+  place-content: center;
+  background: var(--pink);
+  color: #fff;
+  font-family: var(--font-display), "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.stepTitle {
+  margin: 0.1rem 0 0.15rem;
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 1.06rem;
+}
+.stepText {
+  margin: 0;
+  font-size: 0.97rem;
+}
+.stepText b {
+  color: var(--ink);
+}
+
+.after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.note {
+  background: var(--cream2);
+  border-radius: 1rem;
+  padding: 1.05rem 1.15rem;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.noteTitle {
+  margin: 0;
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+.big {
+  margin: 0;
+  font-weight: 800;
+  color: var(--pink700);
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+}
+.noteText {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.close {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  padding: clamp(1.4rem, 5vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: center;
+}
+.close .script {
+  font-size: 2rem;
+}
+.closeText {
+  margin: 0;
+  font-size: 1.05rem;
+}
+.sig {
+  margin: 0.4rem 0 0;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+.sig a {
+  color: var(--pink700);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.foot {
+  margin: 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.rule {
+  border: 0;
+  height: 1px;
+  background: var(--line);
+  margin: 0;
+}
+
+@media (max-width: 540px) {
+  .compare,
+  .after {
+    grid-template-columns: 1fr;
+  }
+}
